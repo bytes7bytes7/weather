@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 
-import '../../domain/auth_repository.dart';
+import '../../domain/repositories/auth_repository.dart';
 
 @test
 @prod

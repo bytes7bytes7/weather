@@ -1,13 +1,7 @@
 import 'package:injectable/injectable.dart';
 
-import '../../domain/forecast.dart';
-import '../../domain/forecast_repository.dart';
-import '../../domain/location.dart';
-import '../../domain/temperature.dart';
-import '../../domain/weather.dart';
-import '../../domain/weather_type.dart';
-import '../../domain/wind.dart';
-import '../../domain/wind_direction.dart';
+import '../../domain/repositories/forecast_repository.dart';
+import '../../domain/value_objects/value_objects.dart';
 
 @test
 @prod

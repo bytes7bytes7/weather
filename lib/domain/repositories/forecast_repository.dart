@@ -1,5 +1,5 @@
-import 'forecast.dart';
-import 'location.dart';
+import '../value_objects/forecast.dart';
+import '../value_objects/location.dart';
 
 abstract class ForecastRepository {
   const ForecastRepository();
