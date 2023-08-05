@@ -1,4 +1,5 @@
 import 'temperature.dart';
+import 'weather.dart';
 import 'wind.dart';
 
 class Forecast {
@@ -14,5 +15,5 @@ class Forecast {
   final Temperature temperature;
   final double humidity;
   final Wind wind;
-  final String weather;
+  final Weather weather;
 }
