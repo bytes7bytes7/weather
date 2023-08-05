@@ -1,0 +1,39 @@
+targets:
+  $default:
+    sources:
+      include:
+        - pubspec.yaml
+        - lib/**
+        - $package$
+    builders:
+      envied_generator|envied_generator:
+        generate_for:
+          - "**/env/**.dart"
+      injectable_generator|injectable_generator:
+        generate_for:
+          - "**/infrastructure/**.dart"
+      json_serializable|json_serializable:
+        generate_for:
+          - "**/infrastructure/**.dart"
+        options:
+          # Options configure how source code is generated for every
+          # `@JsonSerializable`-annotated class in the package.
+
+          # The default values
+          any_map: false
+          checked: false
+          constructor: ""
+          create_factory: true
+          # create_field_map: false
+          create_to_json: true
+          disallow_unrecognized_keys: false
+          field_rename: none
+          generic_argument_factories: false
+          ignore_unannotated: false
+          include_if_null: true
+
+          # Not default values
+          explicit_to_json: true
+      retrofit_generator|retrofit_generator:
+        generate_for:
+          - "**/infrastructure/**.dart"
