@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../application/view_models/view_models.dart';
 import '../../gen/assets.gen.dart';
-import '../../themes/extensions/color_scheme_tx.dart';
+import '../../themes/extensions/extensions.dart';
+import '../widgets/widgets.dart';
 
 class ForecastScreen extends StatelessWidget {
   const ForecastScreen({super.key});
@@ -44,7 +46,90 @@ class ForecastScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Assets.images.snow.image(),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [
+                        theme.colorScheme.secondary,
+                        theme.colorScheme.secondary.withOpacity(0),
+                      ],
+                      stops: const [0.01, 1],
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(32),
+                    child: Assets.images.snow.image(),
+                  ),
+                ),
+                Text(
+                  '28º',
+                  style: theme.textTheme.displayLarge,
+                ),
+                Text(
+                  'Гроза',
+                  style: theme.textTheme.bodyLarge,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Макс: 31º Мин: 25º',
+                  style: theme.textTheme.bodyLarge,
+                ),
+                ForecastDayCard(
+                  onItemPressed: (index) {},
+                  selectedForecastIndex: 1,
+                  forecasts: List.generate(
+                    4,
+                    (index) {
+                      return ForecastVM(
+                        date: '',
+                        time: '14:00',
+                        humidity: 'Высокая влажность',
+                        humidityPercent: '100%',
+                        relativeDate: 'Сегодня',
+                        temperature: const TemperatureVM(
+                          current: '23º',
+                          min: '17º',
+                          max: '27º',
+                        ),
+                        weather: WeatherVM(
+                          description: 'Гроза',
+                          bigIconPath: Assets.images.clear.path,
+                          smallIconPath: Assets.icons.clear.path,
+                        ),
+                        wind: const WindVM(
+                          direction: 'Ветер северо-восточный',
+                          speed: '2 м/с',
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                ForecastDetailsDayCard(
+                  forecast: ForecastVM(
+                    date: '',
+                    time: '14:00',
+                    humidity: 'Высокая влажность',
+                    humidityPercent: '100%',
+                    relativeDate: 'Сегодня',
+                    temperature: const TemperatureVM(
+                      current: '23º',
+                      min: '17º',
+                      max: '27º',
+                    ),
+                    weather: WeatherVM(
+                      description: 'Гроза',
+                      bigIconPath: Assets.images.clear.path,
+                      smallIconPath: Assets.icons.clear.path,
+                    ),
+                    wind: const WindVM(
+                      direction: 'Ветер северо-восточный',
+                      speed: '2 м/с',
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

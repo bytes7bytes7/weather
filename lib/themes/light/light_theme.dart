@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../gen/fonts.gen.dart';
-import '../extensions/color_scheme_tx.dart';
+import '../extensions/extensions.dart';
 
 part 'colors.dart';
 
@@ -23,57 +23,62 @@ final lightTheme = ThemeData.light().copyWith(
     surface: _Colors.white,
     onSurface: _Colors.black,
   ),
-  textTheme: const TextTheme(
-    displayLarge: TextStyle(
+  textTheme: TextTheme(
+    displayLarge: const TextStyle(
       fontSize: 64,
       fontWeight: FontWeight.w500,
       fontFamily: FontFamily.ubuntu,
       color: _Colors.white,
     ),
-    displayMedium: TextStyle(
+    displayMedium: const TextStyle(
       fontSize: 48,
       fontWeight: FontWeight.bold,
       fontFamily: FontFamily.inter,
       color: _Colors.white,
     ),
-    displaySmall: TextStyle(
+    displaySmall: const TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w300,
       fontFamily: FontFamily.inter,
       color: _Colors.white,
     ),
-    headlineMedium: TextStyle(
+    headlineMedium: const TextStyle(
       fontSize: 17,
       fontWeight: FontWeight.w500,
       color: _Colors.white,
     ),
-    titleLarge: TextStyle(
+    titleLarge: const TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.w500,
       fontFamily: FontFamily.ubuntu,
       color: _Colors.shark,
     ),
-    titleMedium: TextStyle(
+    titleMedium: const TextStyle(
       fontSize: 17,
       fontWeight: FontWeight.w400,
       color: _Colors.black,
     ),
-    titleSmall: TextStyle(
+    titleSmall: const TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w500,
       color: _Colors.white,
     ),
-    bodyLarge: TextStyle(
+    bodyLarge: const TextStyle(
       fontSize: 17,
       fontWeight: FontWeight.w400,
       color: _Colors.white,
     ),
-    bodyMedium: TextStyle(
+    bodyMedium: const TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w400,
       color: _Colors.regentGray,
     ),
-    labelMedium: TextStyle(
+    bodySmall: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w500,
+      color: _Colors.white.withOpacity(0.2),
+    ),
+    labelMedium: const TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w400,
       color: _Colors.white,
@@ -147,10 +152,40 @@ final lightTheme = ThemeData.light().copyWith(
       ),
     ),
   ),
+  dividerTheme: const DividerThemeData(
+    color: _Colors.white,
+    thickness: 1.5,
+    space: 0,
+  ),
+  cardTheme: CardTheme(
+    color: _Colors.white.withOpacity(0.2),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
+  ),
   extensions: [
     const ColorSchemeTX(
       gradientPrimary: _Colors.blue,
       gradientSecondary: _Colors.black,
+    ),
+    CardThemeTX(
+      selected: CardTheme(
+        color: _Colors.white.withOpacity(0.4),
+        shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(
+            color: _Colors.white,
+          ),
+        ),
+      ),
+      unselected: CardTheme(
+        color: Colors.transparent,
+        shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
     ),
   ],
 );
