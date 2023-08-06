@@ -44,3 +44,6 @@ app.*.map.json
 /android/app/release
 
 .fvm/
+android/app/google-services.json
+.env
+lib/env/env.g.dart

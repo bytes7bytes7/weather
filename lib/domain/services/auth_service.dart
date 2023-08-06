@@ -15,6 +15,7 @@ class AuthService {
 
   Stream<DomainEvent> get events => _eventController.stream;
 
+  @disposeMethod
   Future<void> dispose() async {
     await _eventController.close();
   }
