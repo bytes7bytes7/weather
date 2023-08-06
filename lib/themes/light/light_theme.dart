@@ -159,6 +159,7 @@ final lightTheme = ThemeData.light().copyWith(
   ),
   cardTheme: CardTheme(
     color: _Colors.white.withOpacity(0.2),
+    margin: EdgeInsets.zero,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(20),
     ),

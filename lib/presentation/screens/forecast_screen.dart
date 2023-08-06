@@ -62,20 +62,27 @@ class ForecastScreen extends StatelessWidget {
                     child: Assets.images.snow.image(),
                   ),
                 ),
-                Text(
-                  '28º',
-                  style: theme.textTheme.displayLarge,
-                ),
-                Text(
-                  'Гроза',
-                  style: theme.textTheme.bodyLarge,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Макс: 31º Мин: 25º',
-                  style: theme.textTheme.bodyLarge,
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '28º',
+                        style: theme.textTheme.displayLarge,
+                      ),
+                      Text(
+                        'Гроза',
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Макс: 31º Мин: 25º',
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
                 ),
                 ForecastDayCard(
                   onItemPressed: (index) {},
@@ -106,6 +113,9 @@ class ForecastScreen extends StatelessWidget {
                       );
                     },
                   ),
+                ),
+                const SizedBox(
+                  height: 24,
                 ),
                 ForecastDetailsDayCard(
                   forecast: ForecastVM(
