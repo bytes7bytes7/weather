@@ -10,4 +10,5 @@ class _Colors {
   static const regentGray = Color(0xFF8799A5);
   static const athensGray = Color(0xFFE4E6EC);
   static const heliotrope = Color(0xFFBD87FF);
+  static const maxicanRed = Color(0xFF9F233A);
 }
