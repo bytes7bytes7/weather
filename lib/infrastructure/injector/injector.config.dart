@@ -17,6 +17,7 @@ import '../../domain/repositories/auth_repository.dart' as _i3;
 import '../../domain/repositories/forecast_repository.dart' as _i6;
 import '../../domain/repositories/location_repository.dart' as _i8;
 import '../../domain/services/auth_service.dart' as _i5;
+import '../../domain/services/forecast_service.dart' as _i11;
 import '../repositories/auth_repository.dart' as _i4;
 import '../repositories/forecast_repository.dart' as _i7;
 import '../repositories/location_repository.dart' as _i9;
@@ -60,5 +61,9 @@ _i1.GetIt init(
     },
   );
   gh.factory<_i10.AuthBloc>(() => _i10.AuthBloc(gh<_i5.AuthService>()));
+  gh.singleton<_i11.ForecastService>(_i11.ForecastService(
+    gh<_i8.LocationRepository>(),
+    gh<_i6.ForecastRepository>(),
+  ));
   return getIt;
 }
