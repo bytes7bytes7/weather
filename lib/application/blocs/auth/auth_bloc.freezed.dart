@@ -754,13 +754,14 @@ class __$$_AuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthState implements _AuthState {
+class _$_AuthState extends _AuthState {
   const _$_AuthState(
       {this.isLoading = false,
       this.error = '',
       this.email = '',
       this.password = '',
-      this.obscurePassword = true});
+      this.obscurePassword = true})
+      : super._();
 
   @override
   @JsonKey()
@@ -809,13 +810,14 @@ class _$_AuthState implements _AuthState {
       __$$_AuthStateCopyWithImpl<_$_AuthState>(this, _$identity);
 }
 
-abstract class _AuthState implements AuthState {
+abstract class _AuthState extends AuthState {
   const factory _AuthState(
       {final bool isLoading,
       final String error,
       final String email,
       final String password,
       final bool obscurePassword}) = _$_AuthState;
+  const _AuthState._() : super._();
 
   @override
   bool get isLoading;

@@ -9,4 +9,21 @@ class AuthState with _$AuthState {
     @Default('') String password,
     @Default(true) bool obscurePassword,
   }) = _AuthState;
+
+  const AuthState._();
+
+  bool get canAuthenticate {
+    final e = email;
+    final p = password;
+
+    if (!emailRegexp.hasMatch(e)) {
+      return false;
+    }
+
+    if (p.isEmpty) {
+      return false;
+    }
+
+    return true;
+  }
 }
