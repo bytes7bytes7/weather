@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../gen/assets.gen.dart';
 import '../../themes/extensions/color_scheme_tx.dart';
 
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+class ForecastScreen extends StatelessWidget {
+  const ForecastScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,29 +26,25 @@ class SplashScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 43,
-            ),
+            padding: const EdgeInsets.all(24),
             child: Column(
               children: [
-                const Spacer(
-                  flex: 4,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'WEATHER\nSERVICE',
-                    style: theme.textTheme.displayMedium,
+                InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Assets.icons.location.svg(),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        'Архангельск, Россия',
+                        style: theme.textTheme.titleSmall,
+                      ),
+                    ],
                   ),
                 ),
-                const Spacer(
-                  flex: 4,
-                ),
-                Text(
-                  'dawn is coming soon',
-                  style: theme.textTheme.displaySmall,
-                ),
-                const Spacer(),
+                Assets.images.snow.image(),
               ],
             ),
           ),
