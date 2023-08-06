@@ -1,30 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../domain/entities/account.dart';
 import '../../domain/repositories/auth_repository.dart';
+import '../../utils/mapper.dart';
 import '../data_sources/data_sources.dart';
 
 @test
-@LazySingleton(as: AuthRepository)
-class TestAuthRepository implements AuthRepository {
-  const TestAuthRepository();
-
-  @override
-  Future<void> logIn({required String email, required String password}) {
-    return Future.delayed(const Duration(seconds: 1), () {});
-  }
-
-  @override
-  Future<void> register({required String email, required String password}) {
-    return Future.delayed(const Duration(seconds: 1), () {});
-  }
-}
-
 @prod
 @LazySingleton(as: AuthRepository)
 class ProdAuthRepository implements AuthRepository {
-  const ProdAuthRepository(this._firebaseDataSource);
+  const ProdAuthRepository(this._firebaseDataSource, this._accountMapper);
 
   final FirebaseDataSource _firebaseDataSource;
+  final Mapper<User, Account> _accountMapper;
+
+  @override
+  Stream<Account?> get onAccountChanged => _firebaseDataSource
+      .currentUser()
+      .map((e) => e != null ? _accountMapper.map(e) : null);
 
   @override
   Future<void> logIn({

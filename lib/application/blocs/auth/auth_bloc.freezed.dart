@@ -121,8 +121,8 @@ class __$$_SetEmailEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SetEmailEvent implements _SetEmailEvent {
-  const _$_SetEmailEvent({required this.email});
+class _$_SetEmailEvent extends _SetEmailEvent {
+  const _$_SetEmailEvent({required this.email}) : super._();
 
   @override
   final String email;
@@ -227,9 +227,10 @@ class _$_SetEmailEvent implements _SetEmailEvent {
   }
 }
 
-abstract class _SetEmailEvent implements AuthEvent {
+abstract class _SetEmailEvent extends AuthEvent {
   const factory _SetEmailEvent({required final String email}) =
       _$_SetEmailEvent;
+  const _SetEmailEvent._() : super._();
 
   String get email;
   @JsonKey(ignore: true)
@@ -270,8 +271,8 @@ class __$$_SetPasswordEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SetPasswordEvent implements _SetPasswordEvent {
-  const _$_SetPasswordEvent({required this.password});
+class _$_SetPasswordEvent extends _SetPasswordEvent {
+  const _$_SetPasswordEvent({required this.password}) : super._();
 
   @override
   final String password;
@@ -377,9 +378,10 @@ class _$_SetPasswordEvent implements _SetPasswordEvent {
   }
 }
 
-abstract class _SetPasswordEvent implements AuthEvent {
+abstract class _SetPasswordEvent extends AuthEvent {
   const factory _SetPasswordEvent({required final String password}) =
       _$_SetPasswordEvent;
+  const _SetPasswordEvent._() : super._();
 
   String get password;
   @JsonKey(ignore: true)
@@ -407,8 +409,8 @@ class __$$_SwitchObscuringPasswordEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SwitchObscuringPasswordEvent implements _SwitchObscuringPasswordEvent {
-  const _$_SwitchObscuringPasswordEvent();
+class _$_SwitchObscuringPasswordEvent extends _SwitchObscuringPasswordEvent {
+  const _$_SwitchObscuringPasswordEvent() : super._();
 
   @override
   String toString() {
@@ -503,9 +505,10 @@ class _$_SwitchObscuringPasswordEvent implements _SwitchObscuringPasswordEvent {
   }
 }
 
-abstract class _SwitchObscuringPasswordEvent implements AuthEvent {
+abstract class _SwitchObscuringPasswordEvent extends AuthEvent {
   const factory _SwitchObscuringPasswordEvent() =
       _$_SwitchObscuringPasswordEvent;
+  const _SwitchObscuringPasswordEvent._() : super._();
 }
 
 /// @nodoc
@@ -526,8 +529,8 @@ class __$$_AuthenticateEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthenticateEvent implements _AuthenticateEvent {
-  const _$_AuthenticateEvent();
+class _$_AuthenticateEvent extends _AuthenticateEvent {
+  const _$_AuthenticateEvent() : super._();
 
   @override
   String toString() {
@@ -621,8 +624,9 @@ class _$_AuthenticateEvent implements _AuthenticateEvent {
   }
 }
 
-abstract class _AuthenticateEvent implements AuthEvent {
+abstract class _AuthenticateEvent extends AuthEvent {
   const factory _AuthenticateEvent() = _$_AuthenticateEvent;
+  const _AuthenticateEvent._() : super._();
 }
 
 /// @nodoc

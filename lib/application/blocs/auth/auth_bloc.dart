@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../domain/events/events.dart';
 import '../../../domain/services/auth_service.dart';
 import '../../../utils/regexp/email_regexp.dart';
 
@@ -18,9 +21,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SetPasswordEvent>(_setPassword);
     on<_SwitchObscuringPasswordEvent>(_switchObscuringPassword);
     on<_AuthenticateEvent>(_authenticate);
+
+    on<_UserLoggedInEvent>(_logIn);
+    on<_UserLoggedOutEvent>(_logOut);
+
+    _eventSub = _authService.events.listen((event) {
+      if (event is UserLoggedInEvent) {
+      } else if (event is UserLoggedOutEvent) {}
+    });
   }
 
   final AuthService _authService;
+  StreamSubscription? _eventSub;
+
+  @override
+  Future<void> close() async {
+    await _eventSub?.cancel();
+
+    await super.close();
+  }
 
   void _setEmail(
     _SetEmailEvent event,
@@ -77,4 +96,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(isLoading: false));
     }
   }
+
+  void _logIn(
+    _UserLoggedInEvent event,
+    Emitter<AuthState> emit,
+  ) {}
+
+  void _logOut(
+    _UserLoggedOutEvent event,
+    Emitter<AuthState> emit,
+  ) {}
 }

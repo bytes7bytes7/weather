@@ -23,6 +23,10 @@ class FirebaseDataSource {
     );
   }
 
+  Stream<User?> currentUser() {
+    return _firebase.authStateChanges();
+  }
+
   Future<void> register({
     required String email,
     required String password,
