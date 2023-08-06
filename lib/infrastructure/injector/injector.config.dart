@@ -34,6 +34,7 @@ import '../../domain/repositories/forecast_repository.dart' as _i6;
 import '../../domain/repositories/location_repository.dart' as _i8;
 import '../../domain/services/auth_service.dart' as _i5;
 import '../../domain/services/forecast_service.dart' as _i28;
+import '../../domain/value_objects/forecast.dart' as _i30;
 import '../../domain/value_objects/temperature.dart' as _i19;
 import '../../domain/value_objects/value_objects.dart' as _i22;
 import '../../domain/value_objects/weather.dart' as _i11;
@@ -100,7 +101,9 @@ _i1.GetIt init(
     gh<_i8.LocationRepository>(),
     gh<_i6.ForecastRepository>(),
   ));
-  gh.factory<_i29.ForecastBloc>(
-      () => _i29.ForecastBloc(gh<_i28.ForecastService>()));
+  gh.factory<_i29.ForecastBloc>(() => _i29.ForecastBloc(
+        gh<_i28.ForecastService>(),
+        gh<_i10.Mapper<_i30.Forecast, _i23.ForecastVM>>(),
+      ));
   return getIt;
 }
