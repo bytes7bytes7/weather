@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../themes/themes.dart';
-import 'screens/splash_screen.dart';
+import 'screens/auth_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -12,7 +12,7 @@ class App extends StatelessWidget {
       title: 'Weather Test Task',
       theme: lightTheme,
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home: const AuthScreen(),
     );
   }
 }

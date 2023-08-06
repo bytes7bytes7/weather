@@ -9,7 +9,7 @@ targets:
       envied_generator|envied_generator:
         generate_for:
           - "**/env/**.dart"
-      injectable_generator|injectable_generator:
+      injectable_generator|injectable_builder:
         generate_for:
           - "**/infrastructure/**.dart"
       json_serializable|json_serializable:

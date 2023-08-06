@@ -21,31 +21,33 @@ class SplashScreen extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 43,
-        ),
-        child: Column(
-          children: [
-            const Spacer(
-              flex: 4,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'WEATHER\nSERVICE',
-                style: theme.textTheme.displayMedium,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 43,
+          ),
+          child: Column(
+            children: [
+              const Spacer(
+                flex: 4,
               ),
-            ),
-            const Spacer(
-              flex: 4,
-            ),
-            Text(
-              'dawn is coming soon',
-              style: theme.textTheme.displaySmall,
-            ),
-            const Spacer(),
-          ],
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'WEATHER\nSERVICE',
+                  style: theme.textTheme.displayMedium,
+                ),
+              ),
+              const Spacer(
+                flex: 4,
+              ),
+              Text(
+                'dawn is coming soon',
+                style: theme.textTheme.displaySmall,
+              ),
+              const Spacer(),
+            ],
+          ),
         ),
       ),
     );

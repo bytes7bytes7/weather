@@ -16,7 +16,7 @@ final lightTheme = ThemeData.light().copyWith(
     onPrimary: _Colors.white,
     secondary: _Colors.heliotrope,
     onSecondary: _Colors.white,
-    error: _Colors.maxicanRed,
+    error: _Colors.persimmon,
     onError: _Colors.white,
     background: _Colors.white,
     onBackground: _Colors.black,
@@ -79,9 +79,19 @@ final lightTheme = ThemeData.light().copyWith(
       color: _Colors.white,
     ),
   ),
+  textSelectionTheme: TextSelectionThemeData(
+    cursorColor: _Colors.persimmon,
+    selectionColor: _Colors.persimmon.withOpacity(0.3),
+    selectionHandleColor: _Colors.persimmon,
+  ),
   inputDecorationTheme: const InputDecorationTheme(
-    hintStyle: TextStyle(
+    labelStyle: TextStyle(
       fontSize: 17,
+      fontWeight: FontWeight.w400,
+      color: _Colors.regentGray,
+    ),
+    floatingLabelStyle: TextStyle(
+      fontSize: 20,
       fontWeight: FontWeight.w400,
       color: _Colors.regentGray,
     ),
@@ -100,33 +110,41 @@ final lightTheme = ThemeData.light().copyWith(
     ),
     errorBorder: UnderlineInputBorder(
       borderSide: BorderSide(
-        color: _Colors.maxicanRed,
+        color: _Colors.persimmon,
         width: 1,
       ),
     ),
     focusedErrorBorder: UnderlineInputBorder(
       borderSide: BorderSide(
-        color: _Colors.maxicanRed,
+        color: _Colors.persimmon,
         width: 2,
       ),
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
+      padding: MaterialStateProperty.all(
+        const EdgeInsets.all(15),
+      ),
       textStyle: MaterialStateProperty.all(
         const TextStyle(
           fontSize: 17,
           fontWeight: FontWeight.w500,
-          color: _Colors.white,
         ),
       ),
-      foregroundColor: MaterialStateProperty.resolveWith((states) {
+      foregroundColor: MaterialStateProperty.all(_Colors.white),
+      backgroundColor: MaterialStateProperty.resolveWith((states) {
         if (states.contains(MaterialState.disabled)) {
           return _Colors.blue.withOpacity(0.5);
         }
 
         return _Colors.blue;
       }),
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+      ),
     ),
   ),
   extensions: [
