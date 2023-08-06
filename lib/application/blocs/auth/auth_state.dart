@@ -13,6 +13,10 @@ class AuthState with _$AuthState {
   const AuthState._();
 
   bool get canAuthenticate {
+    if (isLoading) {
+      return false;
+    }
+
     final e = email;
     final p = password;
 
