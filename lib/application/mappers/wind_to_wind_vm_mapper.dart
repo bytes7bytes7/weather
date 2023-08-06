@@ -13,8 +13,16 @@ class WindToWindVMMapper extends Mapper<Wind, WindVM> {
 
   @override
   WindVM map(Wind item) {
+    late final String speed;
+    final fixed = item.speed.toStringAsFixed(1);
+    if (fixed.endsWith('.0')) {
+      speed = item.speed.toStringAsFixed(0);
+    } else {
+      speed = fixed;
+    }
+
     return WindVM(
-      speed: item.speed.toStringAsFixed(1),
+      speed: speed,
       direction: _windDirectionStringProvider.getString(item.direction),
     );
   }
