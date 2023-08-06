@@ -12,12 +12,14 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../application/blocs/auth/auth_bloc.dart' as _i8;
+import '../../application/blocs/auth/auth_bloc.dart' as _i10;
 import '../../domain/repositories/auth_repository.dart' as _i3;
 import '../../domain/repositories/forecast_repository.dart' as _i6;
+import '../../domain/repositories/location_repository.dart' as _i8;
 import '../../domain/services/auth_service.dart' as _i5;
 import '../repositories/auth_repository.dart' as _i4;
 import '../repositories/forecast_repository.dart' as _i7;
+import '../repositories/location_repository.dart' as _i9;
 
 const String _test = 'test';
 const String _prod = 'prod';
@@ -50,6 +52,13 @@ _i1.GetIt init(
       _prod,
     },
   );
-  gh.factory<_i8.AuthBloc>(() => _i8.AuthBloc(gh<_i5.AuthService>()));
+  gh.lazySingleton<_i8.LocationRepository>(
+    () => _i9.TestLocationRepository(),
+    registerFor: {
+      _test,
+      _prod,
+    },
+  );
+  gh.factory<_i10.AuthBloc>(() => _i10.AuthBloc(gh<_i5.AuthService>()));
   return getIt;
 }
