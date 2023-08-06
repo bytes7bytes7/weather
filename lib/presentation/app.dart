@@ -11,6 +11,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Weather Test Task',
       theme: lightTheme,
+      debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
     );
   }
