@@ -14,7 +14,7 @@ class TestAuthRepository implements AuthRepository {
   }
 
   @override
-  Future<void> signUp({required String email, required String password}) {
+  Future<void> register({required String email, required String password}) {
     return Future.delayed(const Duration(seconds: 1), () {});
   }
 }
