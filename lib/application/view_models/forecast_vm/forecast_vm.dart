@@ -13,6 +13,7 @@ class ForecastVM with _$ForecastVM {
     required String date,
     required String time,
     required TemperatureVM temperature,
+    required String humidityPercent,
     required String humidity,
     required WindVM wind,
     required WeatherVM weather,

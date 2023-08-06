@@ -20,6 +20,7 @@ mixin _$ForecastVM {
   String get date => throw _privateConstructorUsedError;
   String get time => throw _privateConstructorUsedError;
   TemperatureVM get temperature => throw _privateConstructorUsedError;
+  String get humidityPercent => throw _privateConstructorUsedError;
   String get humidity => throw _privateConstructorUsedError;
   WindVM get wind => throw _privateConstructorUsedError;
   WeatherVM get weather => throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $ForecastVMCopyWith<$Res> {
       String date,
       String time,
       TemperatureVM temperature,
+      String humidityPercent,
       String humidity,
       WindVM wind,
       WeatherVM weather});
@@ -66,6 +68,7 @@ class _$ForecastVMCopyWithImpl<$Res, $Val extends ForecastVM>
     Object? date = null,
     Object? time = null,
     Object? temperature = null,
+    Object? humidityPercent = null,
     Object? humidity = null,
     Object? wind = null,
     Object? weather = null,
@@ -87,6 +90,10 @@ class _$ForecastVMCopyWithImpl<$Res, $Val extends ForecastVM>
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
               as TemperatureVM,
+      humidityPercent: null == humidityPercent
+          ? _value.humidityPercent
+          : humidityPercent // ignore: cast_nullable_to_non_nullable
+              as String,
       humidity: null == humidity
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
@@ -140,6 +147,7 @@ abstract class _$$_ForecastVMCopyWith<$Res>
       String date,
       String time,
       TemperatureVM temperature,
+      String humidityPercent,
       String humidity,
       WindVM wind,
       WeatherVM weather});
@@ -167,6 +175,7 @@ class __$$_ForecastVMCopyWithImpl<$Res>
     Object? date = null,
     Object? time = null,
     Object? temperature = null,
+    Object? humidityPercent = null,
     Object? humidity = null,
     Object? wind = null,
     Object? weather = null,
@@ -188,6 +197,10 @@ class __$$_ForecastVMCopyWithImpl<$Res>
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
               as TemperatureVM,
+      humidityPercent: null == humidityPercent
+          ? _value.humidityPercent
+          : humidityPercent // ignore: cast_nullable_to_non_nullable
+              as String,
       humidity: null == humidity
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
@@ -212,6 +225,7 @@ class _$_ForecastVM implements _ForecastVM {
       required this.date,
       required this.time,
       required this.temperature,
+      required this.humidityPercent,
       required this.humidity,
       required this.wind,
       required this.weather});
@@ -225,6 +239,8 @@ class _$_ForecastVM implements _ForecastVM {
   @override
   final TemperatureVM temperature;
   @override
+  final String humidityPercent;
+  @override
   final String humidity;
   @override
   final WindVM wind;
@@ -233,7 +249,7 @@ class _$_ForecastVM implements _ForecastVM {
 
   @override
   String toString() {
-    return 'ForecastVM(relativeDate: $relativeDate, date: $date, time: $time, temperature: $temperature, humidity: $humidity, wind: $wind, weather: $weather)';
+    return 'ForecastVM(relativeDate: $relativeDate, date: $date, time: $time, temperature: $temperature, humidityPercent: $humidityPercent, humidity: $humidity, wind: $wind, weather: $weather)';
   }
 
   @override
@@ -247,6 +263,8 @@ class _$_ForecastVM implements _ForecastVM {
             (identical(other.time, time) || other.time == time) &&
             (identical(other.temperature, temperature) ||
                 other.temperature == temperature) &&
+            (identical(other.humidityPercent, humidityPercent) ||
+                other.humidityPercent == humidityPercent) &&
             (identical(other.humidity, humidity) ||
                 other.humidity == humidity) &&
             (identical(other.wind, wind) || other.wind == wind) &&
@@ -255,7 +273,7 @@ class _$_ForecastVM implements _ForecastVM {
 
   @override
   int get hashCode => Object.hash(runtimeType, relativeDate, date, time,
-      temperature, humidity, wind, weather);
+      temperature, humidityPercent, humidity, wind, weather);
 
   @JsonKey(ignore: true)
   @override
@@ -270,6 +288,7 @@ abstract class _ForecastVM implements ForecastVM {
       required final String date,
       required final String time,
       required final TemperatureVM temperature,
+      required final String humidityPercent,
       required final String humidity,
       required final WindVM wind,
       required final WeatherVM weather}) = _$_ForecastVM;
@@ -282,6 +301,8 @@ abstract class _ForecastVM implements ForecastVM {
   String get time;
   @override
   TemperatureVM get temperature;
+  @override
+  String get humidityPercent;
   @override
   String get humidity;
   @override
