@@ -21,9 +21,33 @@ dev_dependencies:
     sdk: flutter
 
   build_runner: 2.3.3
+  flutter_gen_runner: 5.3.1
   flutter_lints: 2.0.2
   freezed: 2.3.5
   injectable_generator: 2.1.6
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/inter/Inter-Black.ttf
+        - asset: assets/fonts/inter/Inter-Bold.ttf
+        - asset: assets/fonts/inter/Inter-ExtraBold.ttf
+        - asset: assets/fonts/inter/Inter-ExtraLight.ttf
+        - asset: assets/fonts/inter/Inter-Light.ttf
+        - asset: assets/fonts/inter/Inter-Medium.ttf
+        - asset: assets/fonts/inter/Inter-Regular.ttf
+        - asset: assets/fonts/inter/Inter-SemiBold.ttf
+        - asset: assets/fonts/inter/Inter-Thin.ttf
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/ubuntu/Ubuntu-Bold.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-BoldItalic.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-Italic.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-Light.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-LightItalic.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-Medium.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-MediumItalic.ttf
+        - asset: assets/fonts/ubuntu/Ubuntu-Regular.ttf
