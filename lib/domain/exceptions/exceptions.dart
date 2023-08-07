@@ -4,6 +4,7 @@ export 'invalid_email_exception.dart';
 export 'location_service_disabled_exception.dart';
 export 'no_location_permission_exception.dart';
 export 'operation_not_allowed_exception.dart';
+export 'too_many_requests_exception.dart';
 export 'unknown_exception.dart';
 export 'user_disabled_exception.dart';
 export 'user_not_found_exception.dart';

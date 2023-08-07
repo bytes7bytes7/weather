@@ -16,4 +16,6 @@ abstract class AuthExceptionStringProvider {
   String get weakPassword;
 
   String get wrongCredentials;
+
+  String get tooManyReq;
 }

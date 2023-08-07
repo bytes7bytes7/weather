@@ -12,6 +12,7 @@ const _operationNotAllowed = 'operation-not-allowed';
 const _userDisabled = 'user-disabled';
 const _userNotFound = 'user-not-found';
 const _wrongPassword = 'wrong-password';
+const _tooManyReq = 'too-many-requests';
 
 @lazySingleton
 class FirebaseDataSource {
@@ -66,6 +67,10 @@ class FirebaseDataSource {
         throw const WeakPasswordException();
       }
 
+      if (e.code == _tooManyReq) {
+        throw const TooManyRequestsException();
+      }
+
       throw UnknownException(e.toString());
     } catch (e) {
       throw UnknownException(e.toString());
@@ -96,6 +101,10 @@ class FirebaseDataSource {
 
       if (e.code == _wrongPassword) {
         throw const WrongCredentialsException();
+      }
+
+      if (e.code == _tooManyReq) {
+        throw const TooManyRequestsException();
       }
 
       throw UnknownException(e.toString());

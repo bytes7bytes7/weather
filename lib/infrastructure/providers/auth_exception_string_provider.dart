@@ -29,4 +29,7 @@ class ProdAuthExceptionStringProvider implements AuthExceptionStringProvider {
 
   @override
   String get wrongCredentials => 'Неверные логин и/или пароль';
+
+  @override
+  String get tooManyReq => 'Слишком много запросов. Повторите попытку позже';
 }
