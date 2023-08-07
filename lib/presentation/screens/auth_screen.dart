@@ -75,8 +75,9 @@ class _Body extends StatelessWidget {
                   onChanged: (v) {
                     bloc.add(AuthEvent.setEmail(email: v));
                   },
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Email',
+                    errorText: state.emailError,
                   ),
                 ),
                 const SizedBox(

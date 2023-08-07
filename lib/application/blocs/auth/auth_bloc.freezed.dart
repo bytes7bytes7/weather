@@ -789,6 +789,7 @@ mixin _$AuthState {
   bool get isLoading => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  bool? get isEmailValid => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   bool get obscurePassword => throw _privateConstructorUsedError;
 
@@ -807,6 +808,7 @@ abstract class $AuthStateCopyWith<$Res> {
       bool isLoading,
       String error,
       String email,
+      bool? isEmailValid,
       String password,
       bool obscurePassword});
 }
@@ -828,6 +830,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? isLoading = null,
     Object? error = null,
     Object? email = null,
+    Object? isEmailValid = freezed,
     Object? password = null,
     Object? obscurePassword = null,
   }) {
@@ -848,6 +851,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      isEmailValid: freezed == isEmailValid
+          ? _value.isEmailValid
+          : isEmailValid // ignore: cast_nullable_to_non_nullable
+              as bool?,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -872,6 +879,7 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       bool isLoading,
       String error,
       String email,
+      bool? isEmailValid,
       String password,
       bool obscurePassword});
 }
@@ -891,6 +899,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? error = null,
     Object? email = null,
+    Object? isEmailValid = freezed,
     Object? password = null,
     Object? obscurePassword = null,
   }) {
@@ -911,6 +920,10 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      isEmailValid: freezed == isEmailValid
+          ? _value.isEmailValid
+          : isEmailValid // ignore: cast_nullable_to_non_nullable
+              as bool?,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -931,6 +944,7 @@ class _$_AuthState extends _AuthState {
       this.isLoading = false,
       this.error = '',
       this.email = '',
+      this.isEmailValid,
       this.password = '',
       this.obscurePassword = true})
       : super._();
@@ -948,6 +962,8 @@ class _$_AuthState extends _AuthState {
   @JsonKey()
   final String email;
   @override
+  final bool? isEmailValid;
+  @override
   @JsonKey()
   final String password;
   @override
@@ -956,7 +972,7 @@ class _$_AuthState extends _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(initialized: $initialized, isLoading: $isLoading, error: $error, email: $email, password: $password, obscurePassword: $obscurePassword)';
+    return 'AuthState(initialized: $initialized, isLoading: $isLoading, error: $error, email: $email, isEmailValid: $isEmailValid, password: $password, obscurePassword: $obscurePassword)';
   }
 
   @override
@@ -970,6 +986,8 @@ class _$_AuthState extends _AuthState {
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.isEmailValid, isEmailValid) ||
+                other.isEmailValid == isEmailValid) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.obscurePassword, obscurePassword) ||
@@ -978,7 +996,7 @@ class _$_AuthState extends _AuthState {
 
   @override
   int get hashCode => Object.hash(runtimeType, initialized, isLoading, error,
-      email, password, obscurePassword);
+      email, isEmailValid, password, obscurePassword);
 
   @JsonKey(ignore: true)
   @override
@@ -993,6 +1011,7 @@ abstract class _AuthState extends AuthState {
       final bool isLoading,
       final String error,
       final String email,
+      final bool? isEmailValid,
       final String password,
       final bool obscurePassword}) = _$_AuthState;
   const _AuthState._() : super._();
@@ -1005,6 +1024,8 @@ abstract class _AuthState extends AuthState {
   String get error;
   @override
   String get email;
+  @override
+  bool? get isEmailValid;
   @override
   String get password;
   @override

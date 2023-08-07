@@ -71,9 +71,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _SetEmailEvent event,
     Emitter<AuthState> emit,
   ) {
+    final isValid = emailRegexp.hasMatch(event.email);
+
     emit(
       state.copyWith(
         email: event.email,
+        isEmailValid: isValid,
       ),
     );
   }

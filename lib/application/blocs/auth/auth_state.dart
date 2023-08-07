@@ -7,11 +7,20 @@ class AuthState with _$AuthState {
     @Default(false) bool isLoading,
     @Default('') String error,
     @Default('') String email,
+    bool? isEmailValid,
     @Default('') String password,
     @Default(true) bool obscurePassword,
   }) = _AuthState;
 
   const AuthState._();
+
+  String? get emailError {
+    if (isEmailValid != false) {
+      return null;
+    }
+
+    return 'Невалидный email';
+  }
 
   bool get canAuthenticate {
     if (isLoading) {
