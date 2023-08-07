@@ -19,4 +19,8 @@ class ForecastService {
 
     return _forecastRepository.getForecast(location);
   }
+
+  Future<List<Forecast>?> getCachedForecast() async {
+    return _forecastRepository.getCachedForecast();
+  }
 }

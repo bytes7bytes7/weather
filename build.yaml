@@ -6,9 +6,7 @@ targets:
         - lib/**
         - $package$
     builders:
-      envied_generator|envied_generator:
-        generate_for:
-          - "**/env/**.dart"
+      json_serializable|json_serializable:
         options:
           # Options configure how source code is generated for every
           # `@JsonSerializable`-annotated class in the package.

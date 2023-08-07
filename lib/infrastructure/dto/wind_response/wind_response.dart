@@ -17,4 +17,6 @@ class WindResponse {
   final double degree;
 
   factory WindResponse.fromJson(JsonMap json) => _$WindResponseFromJson(json);
+
+  JsonMap toJson() => _$WindResponseToJson(this);
 }

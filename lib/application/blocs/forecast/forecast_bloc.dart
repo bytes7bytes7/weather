@@ -50,9 +50,24 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
         state.copyWith(error: _exceptionStringProvider.noLocationPermission),
       );
     } catch (e) {
-      emit(state.copyWith(error: _exceptionStringProvider.unknown));
+      emit(state.copyWith(error: _exceptionStringProvider.canNotLoad));
     } finally {
       emit(state.copyWith(isLoading: false, error: ''));
+    }
+
+    if (state.forecasts.isEmpty) {
+      emit(state.copyWith(isLoading: true));
+
+      try {
+        final cached = await _forecastService.getCachedForecast();
+        if (cached != null) {
+          emit(state.copyWith(forecasts: _forecastMapper.mapList(cached)));
+        }
+      } catch (e) {
+        emit(state.copyWith(error: _exceptionStringProvider.canNotGetCache));
+      } finally {
+        emit(state.copyWith(isLoading: false, error: ''));
+      }
     }
   }
 

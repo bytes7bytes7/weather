@@ -17,5 +17,5 @@ FiveDayForecastResponse _$FiveDayForecastResponseFromJson(
 Map<String, dynamic> _$FiveDayForecastResponseToJson(
         FiveDayForecastResponse instance) =>
     <String, dynamic>{
-      'list': instance.forecasts,
+      'list': instance.forecasts.map((e) => e.toJson()).toList(),
     };

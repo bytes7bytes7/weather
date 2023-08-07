@@ -16,4 +16,6 @@ class WeatherResponse {
 
   factory WeatherResponse.fromJson(JsonMap json) =>
       _$WeatherResponseFromJson(json);
+
+  JsonMap toJson() => _$WeatherResponseToJson(this);
 }

@@ -5,5 +5,7 @@ abstract class ForecastExceptionStringProvider {
 
   String get noLocationPermission;
 
-  String get unknown;
+  String get canNotLoad;
+
+  String get canNotGetCache;
 }
