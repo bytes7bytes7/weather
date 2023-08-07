@@ -22,7 +22,7 @@ class WeatherInfoResponse {
   @JsonKey(name: 'temp_min')
   final double minTemp;
 
-  final double humidity;
+  final int humidity;
 
   factory WeatherInfoResponse.fromJson(JsonMap json) =>
       _$WeatherInfoResponseFromJson(json);

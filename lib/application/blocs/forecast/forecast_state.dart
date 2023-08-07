@@ -9,4 +9,20 @@ class ForecastState with _$ForecastState {
     @Default(0) int selectedForecastIndex,
     LocationVM? location,
   }) = _ForecastState;
+
+  const ForecastState._();
+
+  ForecastVM? get selectedForecast {
+    final list = List.of(forecasts);
+    if (list.isEmpty) {
+      return null;
+    }
+
+    final index = selectedForecastIndex;
+    if (index < 0 || index >= list.length) {
+      return null;
+    }
+
+    return list[index];
+  }
 }

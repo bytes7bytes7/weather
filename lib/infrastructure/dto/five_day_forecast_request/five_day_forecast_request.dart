@@ -11,17 +11,24 @@ class FiveDayForecastRequest {
     required this.longitude,
     required this.apiKey,
     required this.language,
+    required this.amount,
+    required this.units,
   });
 
   @JsonKey(name: 'lat')
   final double latitude;
 
-  @JsonKey(name: 'log')
+  @JsonKey(name: 'lon')
   final double longitude;
   final String apiKey;
 
   @JsonKey(name: 'lang')
   final String language;
+
+  @JsonKey(name: 'cnt')
+  final int amount;
+
+  final String units;
 
   JsonMap toJson() => _$FiveDayForecastRequestToJson(this);
 }

@@ -21,7 +21,7 @@ class ForecastResponse {
 
   @JsonKey(name: 'main')
   final WeatherInfoResponse info;
-  final WeatherResponse weather;
+  final List<WeatherResponse> weather;
   final WindResponse wind;
 
   factory ForecastResponse.fromJson(JsonMap json) =>

@@ -8,6 +8,8 @@ import '../data_sources/open_weather/open_weather_data_source.dart';
 import '../dto/dto.dart';
 
 const _lang = 'ru';
+const _amount = 4;
+const _units = 'metric';
 
 @prod
 @LazySingleton(as: ForecastRepository)
@@ -27,6 +29,8 @@ class ProdForecastRepository implements ForecastRepository {
       longitude: location.longitude,
       apiKey: Env.openWeatherApiKey,
       language: _lang,
+      amount: _amount,
+      units: _units,
     );
 
     final response = await _openWeatherDataSource.getFiveDayForecast(request);

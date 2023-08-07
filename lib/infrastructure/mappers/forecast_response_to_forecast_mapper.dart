@@ -30,7 +30,7 @@ class ForecastResponseToForecastMapper
       temperature: _temperatureMapper.map(item.info),
       humidity: item.info.humidity,
       wind: _windMapper.map(item.wind),
-      weather: _weatherMapper.map(item.weather),
+      weather: _weatherMapper.map(item.weather.first),
     );
   }
 }

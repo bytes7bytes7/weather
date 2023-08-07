@@ -585,14 +585,15 @@ class __$$_ForecastStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ForecastState implements _ForecastState {
+class _$_ForecastState extends _ForecastState {
   const _$_ForecastState(
       {this.isLoading = false,
       this.error = '',
       final List<ForecastVM> forecasts = const [],
       this.selectedForecastIndex = 0,
       this.location})
-      : _forecasts = forecasts;
+      : _forecasts = forecasts,
+        super._();
 
   @override
   @JsonKey()
@@ -652,13 +653,14 @@ class _$_ForecastState implements _ForecastState {
       __$$_ForecastStateCopyWithImpl<_$_ForecastState>(this, _$identity);
 }
 
-abstract class _ForecastState implements ForecastState {
+abstract class _ForecastState extends ForecastState {
   const factory _ForecastState(
       {final bool isLoading,
       final String error,
       final List<ForecastVM> forecasts,
       final int selectedForecastIndex,
       final LocationVM? location}) = _$_ForecastState;
+  const _ForecastState._() : super._();
 
   @override
   bool get isLoading;

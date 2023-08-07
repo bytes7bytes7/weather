@@ -13,7 +13,7 @@ class Forecast {
 
   final DateTime dateTime;
   final Temperature temperature;
-  final double humidity;
+  final int humidity;
   final Wind wind;
   final Weather weather;
 }

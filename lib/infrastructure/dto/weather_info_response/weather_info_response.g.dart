@@ -11,7 +11,7 @@ WeatherInfoResponse _$WeatherInfoResponseFromJson(Map<String, dynamic> json) =>
       currentTemp: (json['temp'] as num).toDouble(),
       maxTemp: (json['temp_max'] as num).toDouble(),
       minTemp: (json['temp_min'] as num).toDouble(),
-      humidity: (json['humidity'] as num).toDouble(),
+      humidity: json['humidity'] as int,
     );
 
 Map<String, dynamic> _$WeatherInfoResponseToJson(

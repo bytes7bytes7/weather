@@ -1,5 +1,5 @@
 abstract class HumidityStringProvider {
   const HumidityStringProvider();
 
-  String getString(double humidity);
+  String getString(int humidity);
 }

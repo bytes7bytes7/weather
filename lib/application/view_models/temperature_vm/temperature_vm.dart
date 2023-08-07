@@ -8,5 +8,6 @@ class TemperatureVM with _$TemperatureVM {
     required String min,
     required String max,
     required String current,
+    required String minMax,
   }) = _TemperatureVM;
 }

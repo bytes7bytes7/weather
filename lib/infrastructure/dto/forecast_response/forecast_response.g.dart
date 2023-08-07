@@ -10,8 +10,9 @@ ForecastResponse _$ForecastResponseFromJson(Map<String, dynamic> json) =>
     ForecastResponse(
       dateTime: json['dt'] as int,
       info: WeatherInfoResponse.fromJson(json['main'] as Map<String, dynamic>),
-      weather:
-          WeatherResponse.fromJson(json['weather'] as Map<String, dynamic>),
+      weather: (json['weather'] as List<dynamic>)
+          .map((e) => WeatherResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
       wind: WindResponse.fromJson(json['wind'] as Map<String, dynamic>),
     );
 

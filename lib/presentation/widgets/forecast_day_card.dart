@@ -21,6 +21,8 @@ class ForecastDayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final selectedForecast = forecasts[selectedForecastIndex];
+
     return Card(
       color: theme.colorScheme.background.withOpacity(0.2),
       child: Column(
@@ -31,14 +33,14 @@ class ForecastDayCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(_paddingA),
                 child: Text(
-                  'Сегодня',
+                  selectedForecast.relativeDate,
                   style: theme.textTheme.headlineMedium,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(_paddingA),
                 child: Text(
-                  '20 марта',
+                  selectedForecast.date,
                   style: theme.textTheme.labelMedium,
                 ),
               ),

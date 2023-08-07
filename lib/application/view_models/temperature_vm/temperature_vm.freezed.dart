@@ -19,6 +19,7 @@ mixin _$TemperatureVM {
   String get min => throw _privateConstructorUsedError;
   String get max => throw _privateConstructorUsedError;
   String get current => throw _privateConstructorUsedError;
+  String get minMax => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TemperatureVMCopyWith<TemperatureVM> get copyWith =>
@@ -31,7 +32,7 @@ abstract class $TemperatureVMCopyWith<$Res> {
           TemperatureVM value, $Res Function(TemperatureVM) then) =
       _$TemperatureVMCopyWithImpl<$Res, TemperatureVM>;
   @useResult
-  $Res call({String min, String max, String current});
+  $Res call({String min, String max, String current, String minMax});
 }
 
 /// @nodoc
@@ -50,6 +51,7 @@ class _$TemperatureVMCopyWithImpl<$Res, $Val extends TemperatureVM>
     Object? min = null,
     Object? max = null,
     Object? current = null,
+    Object? minMax = null,
   }) {
     return _then(_value.copyWith(
       min: null == min
@@ -64,6 +66,10 @@ class _$TemperatureVMCopyWithImpl<$Res, $Val extends TemperatureVM>
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
               as String,
+      minMax: null == minMax
+          ? _value.minMax
+          : minMax // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -76,7 +82,7 @@ abstract class _$$_TemperatureVMCopyWith<$Res>
       __$$_TemperatureVMCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String min, String max, String current});
+  $Res call({String min, String max, String current, String minMax});
 }
 
 /// @nodoc
@@ -93,6 +99,7 @@ class __$$_TemperatureVMCopyWithImpl<$Res>
     Object? min = null,
     Object? max = null,
     Object? current = null,
+    Object? minMax = null,
   }) {
     return _then(_$_TemperatureVM(
       min: null == min
@@ -107,6 +114,10 @@ class __$$_TemperatureVMCopyWithImpl<$Res>
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
               as String,
+      minMax: null == minMax
+          ? _value.minMax
+          : minMax // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -115,7 +126,10 @@ class __$$_TemperatureVMCopyWithImpl<$Res>
 
 class _$_TemperatureVM implements _TemperatureVM {
   const _$_TemperatureVM(
-      {required this.min, required this.max, required this.current});
+      {required this.min,
+      required this.max,
+      required this.current,
+      required this.minMax});
 
   @override
   final String min;
@@ -123,10 +137,12 @@ class _$_TemperatureVM implements _TemperatureVM {
   final String max;
   @override
   final String current;
+  @override
+  final String minMax;
 
   @override
   String toString() {
-    return 'TemperatureVM(min: $min, max: $max, current: $current)';
+    return 'TemperatureVM(min: $min, max: $max, current: $current, minMax: $minMax)';
   }
 
   @override
@@ -136,11 +152,12 @@ class _$_TemperatureVM implements _TemperatureVM {
             other is _$_TemperatureVM &&
             (identical(other.min, min) || other.min == min) &&
             (identical(other.max, max) || other.max == max) &&
-            (identical(other.current, current) || other.current == current));
+            (identical(other.current, current) || other.current == current) &&
+            (identical(other.minMax, minMax) || other.minMax == minMax));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, min, max, current);
+  int get hashCode => Object.hash(runtimeType, min, max, current, minMax);
 
   @JsonKey(ignore: true)
   @override
@@ -153,7 +170,8 @@ abstract class _TemperatureVM implements TemperatureVM {
   const factory _TemperatureVM(
       {required final String min,
       required final String max,
-      required final String current}) = _$_TemperatureVM;
+      required final String current,
+      required final String minMax}) = _$_TemperatureVM;
 
   @override
   String get min;
@@ -161,6 +179,8 @@ abstract class _TemperatureVM implements TemperatureVM {
   String get max;
   @override
   String get current;
+  @override
+  String get minMax;
   @override
   @JsonKey(ignore: true)
   _$$_TemperatureVMCopyWith<_$_TemperatureVM> get copyWith =>

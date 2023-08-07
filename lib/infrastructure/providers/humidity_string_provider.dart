@@ -7,7 +7,7 @@ class ProdHumidityStringProvider implements HumidityStringProvider {
   const ProdHumidityStringProvider();
 
   @override
-  String getString(double humidity) {
+  String getString(int humidity) {
     if (humidity < 40) {
       return 'Низкая влажность';
     }
