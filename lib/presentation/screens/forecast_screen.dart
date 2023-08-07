@@ -112,20 +112,17 @@ class _Body extends StatelessWidget {
               height: height,
               child: Column(
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Row(
-                      children: [
-                        Assets.icons.location.svg(),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          state.location,
-                          style: theme.textTheme.titleSmall,
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Assets.icons.location.svg(),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        state.location,
+                        style: theme.textTheme.titleSmall,
+                      ),
+                    ],
                   ),
                   DecoratedBox(
                     decoration: BoxDecoration(

@@ -122,7 +122,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } on OperationNotAllowedException {
       emit(state.copyWith(error: _exceptionStringProvider.operationNotAllowed));
     } on UnknownException {
-      emit(state.copyWith(error: _exceptionStringProvider.unknown));
+      emit(state.copyWith(error: _exceptionStringProvider.canNotLoad));
     } on UserDisabledException {
       emit(state.copyWith(error: _exceptionStringProvider.userDisabled));
     } on UserNotFoundException {
@@ -134,7 +134,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } on TooManyRequestsException {
       emit(state.copyWith(error: _exceptionStringProvider.tooManyReq));
     } catch (e) {
-      emit(state.copyWith(error: _exceptionStringProvider.unknown));
+      emit(state.copyWith(error: _exceptionStringProvider.canNotLoad));
     } finally {
       emit(state.copyWith(isLoading: false, error: ''));
     }

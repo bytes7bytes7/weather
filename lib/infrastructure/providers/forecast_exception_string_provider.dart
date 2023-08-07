@@ -7,7 +7,6 @@ class ProdForecastExceptionStringProvider
     implements ForecastExceptionStringProvider {
   const ProdForecastExceptionStringProvider();
 
-
   @override
   String get locationServiceDisabled => 'Включите геолокацию';
 
@@ -18,5 +17,6 @@ class ProdForecastExceptionStringProvider
   String get canNotGetCache => 'Не удалось загрузить кэш';
 
   @override
-  String get canNotLoad => 'Не удалось получить актуальные данные';
+  String get canNotLoad => 'Не удалось получить актуальные данные.'
+      ' Проверьте подключение к интернету';
 }

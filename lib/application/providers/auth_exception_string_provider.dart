@@ -7,7 +7,7 @@ abstract class AuthExceptionStringProvider {
 
   String get operationNotAllowed;
 
-  String get unknown;
+  String get canNotLoad;
 
   String get userDisabled;
 

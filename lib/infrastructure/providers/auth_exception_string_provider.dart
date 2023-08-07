@@ -16,9 +16,6 @@ class ProdAuthExceptionStringProvider implements AuthExceptionStringProvider {
   String get operationNotAllowed => 'Операция не разрешена';
 
   @override
-  String get unknown => 'Неизвестная ошибка';
-
-  @override
   String get userDisabled => 'Пользователь неактивирован';
 
   @override
@@ -32,4 +29,8 @@ class ProdAuthExceptionStringProvider implements AuthExceptionStringProvider {
 
   @override
   String get tooManyReq => 'Слишком много запросов. Повторите попытку позже';
+
+  @override
+  String get canNotLoad =>
+      'Не удалось войти. Проверьте подключение к интернету';
 }
