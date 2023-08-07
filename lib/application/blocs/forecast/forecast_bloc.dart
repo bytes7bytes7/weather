@@ -2,9 +2,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../domain/exceptions/exceptions.dart';
 import '../../../domain/services/forecast_service.dart';
 import '../../../domain/value_objects/forecast.dart';
 import '../../../utils/mapper.dart';
+import '../../providers/forecast_exception_string_provider.dart';
 import '../../view_models/view_models.dart';
 
 part 'forecast_event.dart';
@@ -17,6 +19,7 @@ part 'forecast_bloc.freezed.dart';
 class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
   ForecastBloc(
     this._forecastService,
+    this._exceptionStringProvider,
     this._forecastMapper,
   ) : super(const ForecastState()) {
     on<_LoadEvent>(_load);
@@ -25,6 +28,7 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
   }
 
   final ForecastService _forecastService;
+  final ForecastExceptionStringProvider _exceptionStringProvider;
   final Mapper<Forecast, ForecastVM> _forecastMapper;
 
   Future<void> _load(
@@ -37,11 +41,18 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
       final forecast = await _forecastService.getForecastForMyLocation();
 
       emit(state.copyWith(forecasts: _forecastMapper.mapList(forecast)));
+    } on LocationServiceDisabledException {
+      emit(
+        state.copyWith(error: _exceptionStringProvider.locationServiceDisabled),
+      );
+    } on NoLocationPermissionException {
+      emit(
+        state.copyWith(error: _exceptionStringProvider.noLocationPermission),
+      );
     } catch (e) {
-      emit(state.copyWith(error: 'Ошибка'));
-      emit(state.copyWith(error: ''));
+      emit(state.copyWith(error: _exceptionStringProvider.unknown));
     } finally {
-      emit(state.copyWith(isLoading: false));
+      emit(state.copyWith(isLoading: false, error: ''));
     }
   }
 

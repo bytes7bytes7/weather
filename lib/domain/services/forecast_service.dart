@@ -15,7 +15,6 @@ class ForecastService {
   final ForecastRepository _forecastRepository;
 
   Future<List<Forecast>> getForecastForMyLocation() async {
-    // TODO: handle errors
     final location = await _locationRepository.getLocation();
 
     return _forecastRepository.getForecast(location);

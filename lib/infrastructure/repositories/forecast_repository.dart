@@ -4,7 +4,7 @@ import '../../domain/repositories/forecast_repository.dart';
 import '../../domain/value_objects/value_objects.dart';
 import '../../env/env.dart';
 import '../../utils/mapper.dart';
-import '../data_sources/open_weather_data_source.dart';
+import '../data_sources/open_weather/open_weather_data_source.dart';
 import '../dto/dto.dart';
 
 const _lang = 'ru';

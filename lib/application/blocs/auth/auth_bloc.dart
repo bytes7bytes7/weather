@@ -125,6 +125,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(error: _exceptionStringProvider.weakPassword));
     } on WrongCredentialsException {
       emit(state.copyWith(error: _exceptionStringProvider.wrongCredentials));
+    } catch (e) {
+      emit(state.copyWith(error: _exceptionStringProvider.unknown));
     } finally {
       emit(state.copyWith(isLoading: false, error: ''));
     }
