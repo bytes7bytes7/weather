@@ -21,3 +21,9 @@
 - Приложение не адаптировано под горизонтальную ориентацию по тем же выше названным причинам
 - На Splash экране можно было бы выводить информацию типа "До заката 3.5 часа", используя
   OpenWeatherMap.
+
+## Скриншоты
+
+<img src="screenshots/splash.png">
+<img src="screenshots/auth.png">
+<img src="screenshots/weather.png">
