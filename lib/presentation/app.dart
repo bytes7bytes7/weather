@@ -13,8 +13,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          GetIt.instance.get<AuthBloc>()..add(const AuthEvent.init()),
+      create: (context) => GetIt.instance.get<AuthBloc>(),
       child: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           return MaterialApp(

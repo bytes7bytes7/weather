@@ -785,6 +785,7 @@ abstract class _AuthenticateEvent extends AuthEvent {
 
 /// @nodoc
 mixin _$AuthState {
+  bool get initialized => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -802,7 +803,8 @@ abstract class $AuthStateCopyWith<$Res> {
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
   $Res call(
-      {bool isLoading,
+      {bool initialized,
+      bool isLoading,
       String error,
       String email,
       String password,
@@ -822,6 +824,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? initialized = null,
     Object? isLoading = null,
     Object? error = null,
     Object? email = null,
@@ -829,6 +832,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? obscurePassword = null,
   }) {
     return _then(_value.copyWith(
+      initialized: null == initialized
+          ? _value.initialized
+          : initialized // ignore: cast_nullable_to_non_nullable
+              as bool,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -861,7 +868,8 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {bool isLoading,
+      {bool initialized,
+      bool isLoading,
       String error,
       String email,
       String password,
@@ -879,6 +887,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? initialized = null,
     Object? isLoading = null,
     Object? error = null,
     Object? email = null,
@@ -886,6 +895,10 @@ class __$$_AuthStateCopyWithImpl<$Res>
     Object? obscurePassword = null,
   }) {
     return _then(_$_AuthState(
+      initialized: null == initialized
+          ? _value.initialized
+          : initialized // ignore: cast_nullable_to_non_nullable
+              as bool,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -914,13 +927,17 @@ class __$$_AuthStateCopyWithImpl<$Res>
 
 class _$_AuthState extends _AuthState {
   const _$_AuthState(
-      {this.isLoading = false,
+      {this.initialized = false,
+      this.isLoading = false,
       this.error = '',
       this.email = '',
       this.password = '',
       this.obscurePassword = true})
       : super._();
 
+  @override
+  @JsonKey()
+  final bool initialized;
   @override
   @JsonKey()
   final bool isLoading;
@@ -939,7 +956,7 @@ class _$_AuthState extends _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(isLoading: $isLoading, error: $error, email: $email, password: $password, obscurePassword: $obscurePassword)';
+    return 'AuthState(initialized: $initialized, isLoading: $isLoading, error: $error, email: $email, password: $password, obscurePassword: $obscurePassword)';
   }
 
   @override
@@ -947,6 +964,8 @@ class _$_AuthState extends _AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthState &&
+            (identical(other.initialized, initialized) ||
+                other.initialized == initialized) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
@@ -958,8 +977,8 @@ class _$_AuthState extends _AuthState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, error, email, password, obscurePassword);
+  int get hashCode => Object.hash(runtimeType, initialized, isLoading, error,
+      email, password, obscurePassword);
 
   @JsonKey(ignore: true)
   @override
@@ -970,13 +989,16 @@ class _$_AuthState extends _AuthState {
 
 abstract class _AuthState extends AuthState {
   const factory _AuthState(
-      {final bool isLoading,
+      {final bool initialized,
+      final bool isLoading,
       final String error,
       final String email,
       final String password,
       final bool obscurePassword}) = _$_AuthState;
   const _AuthState._() : super._();
 
+  @override
+  bool get initialized;
   @override
   bool get isLoading;
   @override

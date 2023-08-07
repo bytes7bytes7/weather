@@ -8,7 +8,9 @@ import '../../application/application.dart';
 
 @LazySingleton(as: DateTimeStringProvider)
 class ProdDateTimeStringProvider implements DateTimeStringProvider {
-  const ProdDateTimeStringProvider();
+  const ProdDateTimeStringProvider(this._dateTimeProvider);
+
+  final DateTimeProvider _dateTimeProvider;
 
   String get locale => Platform.localeName;
 
@@ -23,7 +25,7 @@ class ProdDateTimeStringProvider implements DateTimeStringProvider {
   String getRelativeToNow(DateTime dateTime) {
     final thisDay = DateTime(dateTime.year, dateTime.month, dateTime.day);
 
-    final now = DateTime.now();
+    final now = _dateTimeProvider.now();
 
     final yesterday = DateTime(now.year, now.month, now.day - 1);
     final today = DateTime(now.year, now.month, now.day);

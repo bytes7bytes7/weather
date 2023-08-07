@@ -58,7 +58,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _InitEvent event,
     Emitter<AuthState> emit,
   ) async {
+    if (state.initialized) {
+      return;
+    }
+
     await _authService.checkIfIsLoggedIn();
+
+    emit(state.copyWith(initialized: true));
   }
 
   void _setEmail(
