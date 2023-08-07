@@ -31,7 +31,7 @@ class WeatherResponseToWeatherMapper extends Mapper<WeatherResponse, Weather> {
     }
 
     if (id >= 600 && id < 700) {
-      return WeatherType.show;
+      return WeatherType.snow;
     }
 
     if (id >= 700 && id < 800) {

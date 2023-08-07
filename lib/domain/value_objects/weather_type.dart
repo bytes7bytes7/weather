@@ -2,7 +2,7 @@ enum WeatherType {
   thunderstorm,
   drizzle,
   rain,
-  show,
+  snow,
   atmosphere,
   clear,
   clouds,
