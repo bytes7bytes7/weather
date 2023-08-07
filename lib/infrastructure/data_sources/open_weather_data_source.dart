@@ -6,10 +6,17 @@ import '../dto/dto.dart';
 
 part 'open_weather_data_source.g.dart';
 
-@RestApi(baseUrl: 'https://api.openweathermap.org/data/')
+const _baseUrl = 'https://api.openweathermap.org/data/';
+
+@lazySingleton
+@RestApi()
 abstract class OpenWeatherDataSource {
   @factoryMethod
-  factory OpenWeatherDataSource(Dio dio, {String baseUrl}) =
+  factory OpenWeatherDataSource(Dio dio) {
+    return OpenWeatherDataSource._(dio, baseUrl: _baseUrl);
+  }
+
+  factory OpenWeatherDataSource._(Dio dio, {String baseUrl}) =
       _OpenWeatherDataSource;
 
   @GET('/2.5/forecast')

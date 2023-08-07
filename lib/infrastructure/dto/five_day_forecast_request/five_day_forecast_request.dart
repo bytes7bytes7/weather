@@ -23,6 +23,5 @@ class FiveDayForecastRequest {
   @JsonKey(name: 'lang')
   final String language;
 
-  factory FiveDayForecastRequest.fromJson(JsonMap json) =>
-      _$FiveDayForecastRequestFromJson(json);
+  JsonMap toJson() => _$FiveDayForecastRequestToJson(this);
 }

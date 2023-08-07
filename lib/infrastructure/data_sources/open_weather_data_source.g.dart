@@ -12,9 +12,7 @@ class _OpenWeatherDataSource implements OpenWeatherDataSource {
   _OpenWeatherDataSource(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'https://api.openweathermap.org/data/';
-  }
+  });
 
   final Dio _dio;
 

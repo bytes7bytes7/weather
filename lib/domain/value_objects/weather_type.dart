@@ -6,4 +6,5 @@ enum WeatherType {
   atmosphere,
   clear,
   clouds,
+  unknown,
 }
