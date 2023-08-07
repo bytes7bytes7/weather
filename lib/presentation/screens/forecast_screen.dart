@@ -50,6 +50,7 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final scaffoldMsg = ScaffoldMessenger.of(context);
+    final bloc = context.read<ForecastBloc>();
 
     return BlocConsumer<ForecastBloc, ForecastState>(
       listener: (context, state) {
@@ -131,7 +132,9 @@ class _Body extends StatelessWidget {
               ),
             ),
             ForecastDayCard(
-              onItemPressed: (index) {},
+              onItemPressed: (index) {
+                bloc.add(ForecastEvent.selectForecast(index: index));
+              },
               selectedForecastIndex: state.selectedForecastIndex,
               forecasts: state.forecasts,
             ),

@@ -1,18 +1,22 @@
+import 'dart:io';
+
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 
 import '../../application/application.dart';
 
-final _dayDF = DateFormat('d MMMM');
-final _timeDF = DateFormat('HH:mm');
 
 @LazySingleton(as: DateTimeStringProvider)
 class ProdDateTimeStringProvider implements DateTimeStringProvider {
   const ProdDateTimeStringProvider();
 
+  String get locale => Platform.localeName;
+
   @override
   String getDate(DateTime dateTime) {
-    return _dayDF.format(dateTime);
+    final dayDF = DateFormat('d MMMM', locale);
+
+    return dayDF.format(dateTime);
   }
 
   @override
@@ -42,6 +46,8 @@ class ProdDateTimeStringProvider implements DateTimeStringProvider {
 
   @override
   String getTime(DateTime dateTime) {
-    return _timeDF.format(dateTime);
+    final timeDF = DateFormat('HH:mm', locale);
+
+    return timeDF.format(dateTime);
   }
 }

@@ -40,7 +40,6 @@ class AuthService {
     required String email,
     required String password,
   }) async {
-    // TODO: handle errors
     try {
       await _authRepository.logIn(email: email, password: password);
 
@@ -50,6 +49,7 @@ class AuthService {
         await _authRepository.register(email: email, password: password);
 
         _eventController.add(const UserLoggedInEvent());
+        return;
       }
 
       rethrow;

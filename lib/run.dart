@@ -7,6 +7,8 @@ import 'infrastructure/injector/injector.dart';
 import 'presentation/app.dart';
 import 'utils/bloc_logger.dart';
 
+const _locale = Locale('ru', 'RU');
+
 Future<void> run(String env) async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -16,7 +18,7 @@ Future<void> run(String env) async {
   ]);
 
   await configInjector(env: env);
-  await initializeDateFormatting('ru_RU');
+  await initializeDateFormatting(_locale.toString());
 
   Bloc.observer = BlocLogger();
 
