@@ -24,6 +24,6 @@
 
 ## Скриншоты
 
-<img src="screenshots/splash.png">
-<img src="screenshots/auth.png">
-<img src="screenshots/weather.png">
+<img src="screenshots/splash.jpg">
+<img src="screenshots/auth.jpg">
+<img src="screenshots/weather.jpg">
