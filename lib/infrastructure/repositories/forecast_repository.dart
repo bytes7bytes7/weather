@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
@@ -5,14 +7,13 @@ import '../../domain/repositories/forecast_repository.dart';
 import '../../domain/value_objects/value_objects.dart';
 import '../../env/env.dart';
 import '../../utils/mapper.dart';
-import '../../utils/typedef.dart';
 import '../data_sources/open_weather/open_weather_data_source.dart';
 import '../dto/dto.dart';
 
 const _lang = 'ru';
 const _amount = 4;
 const _units = 'metric';
-const _boxName = 'forecast';
+const _boxName = 'forecasts';
 const _cachedKey = 'cached_forecast';
 
 @prod
@@ -25,7 +26,7 @@ class ProdForecastRepository implements ForecastRepository {
 
   final OpenWeatherDataSource _openWeatherDataSource;
   final Mapper<ForecastResponse, Forecast> _forecastMapper;
-  late final Box<List<JsonMap>> _box;
+  late final Box<String> _box;
 
   @PostConstruct(preResolve: true)
   @override
@@ -40,7 +41,13 @@ class ProdForecastRepository implements ForecastRepository {
       return null;
     }
 
-    final models = res.map(ForecastResponse.fromJson).toList();
+    final data = json.decode(res);
+    final models = <ForecastResponse>[];
+    for (final e in data) {
+      if (e is Map) {
+        models.add(ForecastResponse.fromJson(e.cast<String, Object?>()));
+      }
+    }
 
     return _forecastMapper.mapList(models);
   }
@@ -60,7 +67,7 @@ class ProdForecastRepository implements ForecastRepository {
 
     final jsonData = response.forecasts.map((e) => e.toJson()).toList();
 
-    await _box.put(_cachedKey, jsonData);
+    await _box.put(_cachedKey, json.encode(jsonData));
 
     return _forecastMapper.mapList(response.forecasts);
   }

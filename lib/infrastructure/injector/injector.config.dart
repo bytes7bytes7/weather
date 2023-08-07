@@ -23,8 +23,8 @@ import '../../application/coordinators/auth_coordinator.dart' as _i42;
 import '../../application/mappers/forecast_to_forecast_vm_mapper.dart' as _i62;
 import '../../application/mappers/temperature_to_temperature_vm_mapper.dart'
     as _i60;
-import '../../application/mappers/weather_to_weather_vm_mapper.dart' as _i57;
-import '../../application/mappers/wind_to_wind_vm_mapper.dart' as _i54;
+import '../../application/mappers/weather_to_weather_vm_mapper.dart' as _i54;
+import '../../application/mappers/wind_to_wind_vm_mapper.dart' as _i57;
 import '../../application/providers/auth_exception_string_provider.dart'
     as _i67;
 import '../../application/providers/date_time_provider.dart' as _i6;
@@ -34,15 +34,15 @@ import '../../application/providers/forecast_exception_string_provider.dart'
 import '../../application/providers/humidity_string_provider.dart' as _i63;
 import '../../application/providers/splash_string_provider.dart' as _i34;
 import '../../application/providers/temperature_string_provider.dart' as _i36;
-import '../../application/providers/weather_icon_provider.dart' as _i58;
+import '../../application/providers/weather_icon_provider.dart' as _i55;
 import '../../application/providers/wind_direction_string_provider.dart'
-    as _i55;
+    as _i58;
 import '../../application/providers/wind_string_provider.dart' as _i40;
 import '../../application/view_models/temperature_vm/temperature_vm.dart'
     as _i59;
 import '../../application/view_models/view_models.dart' as _i61;
-import '../../application/view_models/weather_vm/weather_vm.dart' as _i56;
-import '../../application/view_models/wind_vm/wind_vm.dart' as _i53;
+import '../../application/view_models/weather_vm/weather_vm.dart' as _i53;
+import '../../application/view_models/wind_vm/wind_vm.dart' as _i56;
 import '../../domain/entities/account.dart' as _i28;
 import '../../domain/repositories/auth_repository.dart' as _i44;
 import '../../domain/repositories/forecast_repository.dart' as _i48;
@@ -50,10 +50,10 @@ import '../../domain/repositories/location_repository.dart' as _i15;
 import '../../domain/services/auth_service.dart' as _i47;
 import '../../domain/services/forecast_service.dart' as _i52;
 import '../../domain/value_objects/forecast.dart' as _i31;
-import '../../domain/value_objects/temperature.dart' as _i19;
+import '../../domain/value_objects/temperature.dart' as _i25;
 import '../../domain/value_objects/value_objects.dart' as _i51;
 import '../../domain/value_objects/weather.dart' as _i22;
-import '../../domain/value_objects/wind.dart' as _i25;
+import '../../domain/value_objects/wind.dart' as _i19;
 import '../../utils/mapper.dart' as _i17;
 import '../coordinators/auth_coordinator.dart' as _i43;
 import '../data_sources/data_sources.dart' as _i46;
@@ -62,14 +62,14 @@ import '../data_sources/location_data_source.dart' as _i14;
 import '../data_sources/open_weather/open_weather_data_source.dart' as _i33;
 import '../dto/dto.dart' as _i50;
 import '../dto/forecast_response/forecast_response.dart' as _i30;
-import '../dto/weather_info_response/weather_info_response.dart' as _i18;
+import '../dto/weather_info_response/weather_info_response.dart' as _i24;
 import '../dto/weather_response/weather_response.dart' as _i21;
-import '../dto/wind_response/wind_response.dart' as _i24;
+import '../dto/wind_response/wind_response.dart' as _i18;
 import '../mappers/forecast_response_to_forecast_mapper.dart' as _i32;
 import '../mappers/user_to_account_mapper.dart' as _i29;
-import '../mappers/weather_info_response_to_temperature_mapper.dart' as _i20;
+import '../mappers/weather_info_response_to_temperature_mapper.dart' as _i26;
 import '../mappers/weather_response_to_weather_mapper.dart' as _i23;
-import '../mappers/wind_response_to_wind_mapper.dart' as _i26;
+import '../mappers/wind_response_to_wind_mapper.dart' as _i20;
 import '../modules/dio_module.dart' as _i70;
 import '../modules/hive_module.dart' as _i3;
 import '../modules/navigator_key_module.dart' as _i71;
@@ -139,19 +139,19 @@ Future<_i1.GetIt> init(
       _prod,
     },
   );
-  gh.lazySingleton<_i17.Mapper<_i18.WeatherInfoResponse, _i19.Temperature>>(
-      () => _i20.WeatherInfoResponseToTemperatureMapper());
+  gh.lazySingleton<_i17.Mapper<_i18.WindResponse, _i19.Wind>>(
+      () => _i20.WindResponseToWindMapper());
   gh.lazySingleton<_i17.Mapper<_i21.WeatherResponse, _i22.Weather>>(
       () => _i23.WeatherResponseToWeatherMapper());
-  gh.lazySingleton<_i17.Mapper<_i24.WindResponse, _i25.Wind>>(
-      () => _i26.WindResponseToWindMapper());
+  gh.lazySingleton<_i17.Mapper<_i24.WeatherInfoResponse, _i25.Temperature>>(
+      () => _i26.WeatherInfoResponseToTemperatureMapper());
   gh.lazySingleton<_i17.Mapper<_i27.User, _i28.Account>>(
       () => _i29.UserToAccountMapper());
   gh.lazySingleton<_i17.Mapper<_i30.ForecastResponse, _i31.Forecast>>(
       () => _i32.ForecastResponseToForecastMapper(
-            gh<_i17.Mapper<_i24.WindResponse, _i25.Wind>>(),
+            gh<_i17.Mapper<_i18.WindResponse, _i19.Wind>>(),
             gh<_i17.Mapper<_i21.WeatherResponse, _i22.Weather>>(),
-            gh<_i17.Mapper<_i18.WeatherInfoResponse, _i19.Temperature>>(),
+            gh<_i17.Mapper<_i24.WeatherInfoResponse, _i25.Temperature>>(),
           ));
   gh.lazySingleton<_i33.OpenWeatherDataSource>(
       () => _i33.OpenWeatherDataSource(gh<_i9.Dio>()));
@@ -200,14 +200,14 @@ Future<_i1.GetIt> init(
     gh<_i15.LocationRepository>(),
     gh<_i48.ForecastRepository>(),
   ));
-  gh.lazySingleton<_i17.Mapper<_i25.Wind, _i53.WindVM>>(
-      () => _i54.WindToWindVMMapper(
-            gh<_i55.WindDirectionStringProvider>(),
+  gh.lazySingleton<_i17.Mapper<_i22.Weather, _i53.WeatherVM>>(
+      () => _i54.WeatherToWeatherVMMapper(gh<_i55.WeatherIconProvider>()));
+  gh.lazySingleton<_i17.Mapper<_i19.Wind, _i56.WindVM>>(
+      () => _i57.WindToWindVMMapper(
+            gh<_i58.WindDirectionStringProvider>(),
             gh<_i40.WindStringProvider>(),
           ));
-  gh.lazySingleton<_i17.Mapper<_i22.Weather, _i56.WeatherVM>>(
-      () => _i57.WeatherToWeatherVMMapper(gh<_i58.WeatherIconProvider>()));
-  gh.lazySingleton<_i17.Mapper<_i19.Temperature, _i59.TemperatureVM>>(() =>
+  gh.lazySingleton<_i17.Mapper<_i25.Temperature, _i59.TemperatureVM>>(() =>
       _i60.TemperatureToTemperatureVMMapper(
           gh<_i36.TemperatureStringProvider>()));
   gh.lazySingleton<_i17.Mapper<_i51.Forecast, _i61.ForecastVM>>(
