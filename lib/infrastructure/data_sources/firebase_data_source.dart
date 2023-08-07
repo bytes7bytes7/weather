@@ -27,6 +27,10 @@ class FirebaseDataSource {
     return _firebase.authStateChanges();
   }
 
+  Future<User?> getCurrentUser() async {
+    return _firebase.currentUser;
+  }
+
   Future<void> register({
     required String email,
     required String password,

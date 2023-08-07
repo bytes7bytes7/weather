@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String email) setEmail,
     required TResult Function(String password) setPassword,
     required TResult Function() switchObscuringPassword,
@@ -26,6 +27,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String email)? setEmail,
     TResult? Function(String password)? setPassword,
     TResult? Function()? switchObscuringPassword,
@@ -34,6 +36,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String email)? setEmail,
     TResult Function(String password)? setPassword,
     TResult Function()? switchObscuringPassword,
@@ -43,6 +46,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
     required TResult Function(_SetEmailEvent value) setEmail,
     required TResult Function(_SetPasswordEvent value) setPassword,
     required TResult Function(_SwitchObscuringPasswordEvent value)
@@ -52,6 +56,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitEvent value)? init,
     TResult? Function(_SetEmailEvent value)? setEmail,
     TResult? Function(_SetPasswordEvent value)? setPassword,
     TResult? Function(_SwitchObscuringPasswordEvent value)?
@@ -61,6 +66,7 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
     TResult Function(_SetEmailEvent value)? setEmail,
     TResult Function(_SetPasswordEvent value)? setPassword,
     TResult Function(_SwitchObscuringPasswordEvent value)?
@@ -86,6 +92,130 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_InitEventCopyWith<$Res> {
+  factory _$$_InitEventCopyWith(
+          _$_InitEvent value, $Res Function(_$_InitEvent) then) =
+      __$$_InitEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InitEventCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_InitEvent>
+    implements _$$_InitEventCopyWith<$Res> {
+  __$$_InitEventCopyWithImpl(
+      _$_InitEvent _value, $Res Function(_$_InitEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_InitEvent extends _InitEvent {
+  const _$_InitEvent() : super._();
+
+  @override
+  String toString() {
+    return 'AuthEvent.init()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_InitEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(String email) setEmail,
+    required TResult Function(String password) setPassword,
+    required TResult Function() switchObscuringPassword,
+    required TResult Function() authenticate,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String email)? setEmail,
+    TResult? Function(String password)? setPassword,
+    TResult? Function()? switchObscuringPassword,
+    TResult? Function()? authenticate,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String email)? setEmail,
+    TResult Function(String password)? setPassword,
+    TResult Function()? switchObscuringPassword,
+    TResult Function()? authenticate,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
+    required TResult Function(_SetEmailEvent value) setEmail,
+    required TResult Function(_SetPasswordEvent value) setPassword,
+    required TResult Function(_SwitchObscuringPasswordEvent value)
+        switchObscuringPassword,
+    required TResult Function(_AuthenticateEvent value) authenticate,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitEvent value)? init,
+    TResult? Function(_SetEmailEvent value)? setEmail,
+    TResult? Function(_SetPasswordEvent value)? setPassword,
+    TResult? Function(_SwitchObscuringPasswordEvent value)?
+        switchObscuringPassword,
+    TResult? Function(_AuthenticateEvent value)? authenticate,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
+    TResult Function(_SetEmailEvent value)? setEmail,
+    TResult Function(_SetPasswordEvent value)? setPassword,
+    TResult Function(_SwitchObscuringPasswordEvent value)?
+        switchObscuringPassword,
+    TResult Function(_AuthenticateEvent value)? authenticate,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitEvent extends AuthEvent {
+  const factory _InitEvent() = _$_InitEvent;
+  const _InitEvent._() : super._();
 }
 
 /// @nodoc
@@ -152,6 +282,7 @@ class _$_SetEmailEvent extends _SetEmailEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String email) setEmail,
     required TResult Function(String password) setPassword,
     required TResult Function() switchObscuringPassword,
@@ -163,6 +294,7 @@ class _$_SetEmailEvent extends _SetEmailEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String email)? setEmail,
     TResult? Function(String password)? setPassword,
     TResult? Function()? switchObscuringPassword,
@@ -174,6 +306,7 @@ class _$_SetEmailEvent extends _SetEmailEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String email)? setEmail,
     TResult Function(String password)? setPassword,
     TResult Function()? switchObscuringPassword,
@@ -189,6 +322,7 @@ class _$_SetEmailEvent extends _SetEmailEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
     required TResult Function(_SetEmailEvent value) setEmail,
     required TResult Function(_SetPasswordEvent value) setPassword,
     required TResult Function(_SwitchObscuringPasswordEvent value)
@@ -201,6 +335,7 @@ class _$_SetEmailEvent extends _SetEmailEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitEvent value)? init,
     TResult? Function(_SetEmailEvent value)? setEmail,
     TResult? Function(_SetPasswordEvent value)? setPassword,
     TResult? Function(_SwitchObscuringPasswordEvent value)?
@@ -213,6 +348,7 @@ class _$_SetEmailEvent extends _SetEmailEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
     TResult Function(_SetEmailEvent value)? setEmail,
     TResult Function(_SetPasswordEvent value)? setPassword,
     TResult Function(_SwitchObscuringPasswordEvent value)?
@@ -303,6 +439,7 @@ class _$_SetPasswordEvent extends _SetPasswordEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String email) setEmail,
     required TResult Function(String password) setPassword,
     required TResult Function() switchObscuringPassword,
@@ -314,6 +451,7 @@ class _$_SetPasswordEvent extends _SetPasswordEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String email)? setEmail,
     TResult? Function(String password)? setPassword,
     TResult? Function()? switchObscuringPassword,
@@ -325,6 +463,7 @@ class _$_SetPasswordEvent extends _SetPasswordEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String email)? setEmail,
     TResult Function(String password)? setPassword,
     TResult Function()? switchObscuringPassword,
@@ -340,6 +479,7 @@ class _$_SetPasswordEvent extends _SetPasswordEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
     required TResult Function(_SetEmailEvent value) setEmail,
     required TResult Function(_SetPasswordEvent value) setPassword,
     required TResult Function(_SwitchObscuringPasswordEvent value)
@@ -352,6 +492,7 @@ class _$_SetPasswordEvent extends _SetPasswordEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitEvent value)? init,
     TResult? Function(_SetEmailEvent value)? setEmail,
     TResult? Function(_SetPasswordEvent value)? setPassword,
     TResult? Function(_SwitchObscuringPasswordEvent value)?
@@ -364,6 +505,7 @@ class _$_SetPasswordEvent extends _SetPasswordEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
     TResult Function(_SetEmailEvent value)? setEmail,
     TResult Function(_SetPasswordEvent value)? setPassword,
     TResult Function(_SwitchObscuringPasswordEvent value)?
@@ -430,6 +572,7 @@ class _$_SwitchObscuringPasswordEvent extends _SwitchObscuringPasswordEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String email) setEmail,
     required TResult Function(String password) setPassword,
     required TResult Function() switchObscuringPassword,
@@ -441,6 +584,7 @@ class _$_SwitchObscuringPasswordEvent extends _SwitchObscuringPasswordEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String email)? setEmail,
     TResult? Function(String password)? setPassword,
     TResult? Function()? switchObscuringPassword,
@@ -452,6 +596,7 @@ class _$_SwitchObscuringPasswordEvent extends _SwitchObscuringPasswordEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String email)? setEmail,
     TResult Function(String password)? setPassword,
     TResult Function()? switchObscuringPassword,
@@ -467,6 +612,7 @@ class _$_SwitchObscuringPasswordEvent extends _SwitchObscuringPasswordEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
     required TResult Function(_SetEmailEvent value) setEmail,
     required TResult Function(_SetPasswordEvent value) setPassword,
     required TResult Function(_SwitchObscuringPasswordEvent value)
@@ -479,6 +625,7 @@ class _$_SwitchObscuringPasswordEvent extends _SwitchObscuringPasswordEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitEvent value)? init,
     TResult? Function(_SetEmailEvent value)? setEmail,
     TResult? Function(_SetPasswordEvent value)? setPassword,
     TResult? Function(_SwitchObscuringPasswordEvent value)?
@@ -491,6 +638,7 @@ class _$_SwitchObscuringPasswordEvent extends _SwitchObscuringPasswordEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
     TResult Function(_SetEmailEvent value)? setEmail,
     TResult Function(_SetPasswordEvent value)? setPassword,
     TResult Function(_SwitchObscuringPasswordEvent value)?
@@ -549,6 +697,7 @@ class _$_AuthenticateEvent extends _AuthenticateEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String email) setEmail,
     required TResult Function(String password) setPassword,
     required TResult Function() switchObscuringPassword,
@@ -560,6 +709,7 @@ class _$_AuthenticateEvent extends _AuthenticateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String email)? setEmail,
     TResult? Function(String password)? setPassword,
     TResult? Function()? switchObscuringPassword,
@@ -571,6 +721,7 @@ class _$_AuthenticateEvent extends _AuthenticateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String email)? setEmail,
     TResult Function(String password)? setPassword,
     TResult Function()? switchObscuringPassword,
@@ -586,6 +737,7 @@ class _$_AuthenticateEvent extends _AuthenticateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitEvent value) init,
     required TResult Function(_SetEmailEvent value) setEmail,
     required TResult Function(_SetPasswordEvent value) setPassword,
     required TResult Function(_SwitchObscuringPasswordEvent value)
@@ -598,6 +750,7 @@ class _$_AuthenticateEvent extends _AuthenticateEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitEvent value)? init,
     TResult? Function(_SetEmailEvent value)? setEmail,
     TResult? Function(_SetPasswordEvent value)? setPassword,
     TResult? Function(_SwitchObscuringPasswordEvent value)?
@@ -610,6 +763,7 @@ class _$_AuthenticateEvent extends _AuthenticateEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitEvent value)? init,
     TResult Function(_SetEmailEvent value)? setEmail,
     TResult Function(_SetPasswordEvent value)? setPassword,
     TResult Function(_SwitchObscuringPasswordEvent value)?

@@ -4,6 +4,8 @@ part of 'auth_bloc.dart';
 class AuthEvent with _$AuthEvent {
   const AuthEvent._();
 
+  const factory AuthEvent.init() = _InitEvent;
+
   const factory AuthEvent.setEmail({required String email}) = _SetEmailEvent;
 
   const factory AuthEvent.setPassword({required String password}) =

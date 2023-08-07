@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 import '../../../domain/events/events.dart';
 import '../../../domain/services/auth_service.dart';
 import '../../../utils/regexp/email_regexp.dart';
+import '../../coordinators/auth_coordinator.dart';
 
 part 'auth_event.dart';
 
@@ -14,9 +15,13 @@ part 'auth_state.dart';
 
 part 'auth_bloc.freezed.dart';
 
-@injectable
+@singleton
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc(this._authService) : super(const AuthState()) {
+  AuthBloc(
+    this._authService,
+    this._authCoordinator,
+  ) : super(const AuthState()) {
+    on<_InitEvent>(_init);
     on<_SetEmailEvent>(_setEmail);
     on<_SetPasswordEvent>(_setPassword);
     on<_SwitchObscuringPasswordEvent>(_switchObscuringPassword);
@@ -27,11 +32,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     _eventSub = _authService.events.listen((event) {
       if (event is UserLoggedInEvent) {
-      } else if (event is UserLoggedOutEvent) {}
+        add(const _UserLoggedInEvent());
+      } else if (event is UserLoggedOutEvent) {
+        add(const _UserLoggedOutEvent());
+      }
     });
   }
 
   final AuthService _authService;
+  final AuthCoordinator _authCoordinator;
   StreamSubscription? _eventSub;
 
   @override
@@ -39,6 +48,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     await _eventSub?.cancel();
 
     await super.close();
+  }
+
+  Future<void> _init(
+    _InitEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    await _authService.checkIfIsLoggedIn();
   }
 
   void _setEmail(
@@ -100,10 +116,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _logIn(
     _UserLoggedInEvent event,
     Emitter<AuthState> emit,
-  ) {}
+  ) {
+    _authCoordinator.onLoggedIn();
+  }
 
   void _logOut(
     _UserLoggedOutEvent event,
     Emitter<AuthState> emit,
-  ) {}
+  ) {
+    _authCoordinator.onLoggedOut();
+  }
 }

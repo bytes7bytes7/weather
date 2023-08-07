@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:injectable/injectable.dart';
 
+import '../entities/account.dart';
 import '../events/events.dart';
 import '../repositories/auth_repository.dart';
 
@@ -12,12 +13,26 @@ class AuthService {
   final AuthRepository _authRepository;
 
   final _eventController = StreamController<DomainEvent>.broadcast();
+  StreamSubscription? _accountSub;
 
   Stream<DomainEvent> get events => _eventController.stream;
 
+  @PostConstruct(preResolve: true)
+  Future<void> init() async {
+    _accountSub = _authRepository.onAccountChanged.listen(_updateAccount);
+  }
+
   @disposeMethod
   Future<void> dispose() async {
+    await _accountSub?.cancel();
+
     await _eventController.close();
+  }
+
+  Future<void> checkIfIsLoggedIn() async {
+    final account = await _authRepository.getAccount();
+
+    _updateAccount(account);
   }
 
   Future<void> authenticate({
@@ -33,6 +48,14 @@ class AuthService {
       await _authRepository.register(email: email, password: password);
 
       _eventController.add(const UserLoggedInEvent());
+    }
+  }
+
+  void _updateAccount(Account? account) {
+    if (account != null) {
+      _eventController.add(const UserLoggedInEvent());
+    } else {
+      _eventController.add(const UserLoggedOutEvent());
     }
   }
 }

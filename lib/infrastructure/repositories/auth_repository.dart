@@ -21,6 +21,16 @@ class ProdAuthRepository implements AuthRepository {
       .map((e) => e != null ? _accountMapper.map(e) : null);
 
   @override
+  Future<Account?> getAccount() async {
+    final user = await _firebaseDataSource.getCurrentUser();
+    if (user == null) {
+      return null;
+    }
+
+    return _accountMapper.map(user);
+  }
+
+  @override
   Future<void> logIn({
     required String email,
     required String password,
