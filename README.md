@@ -1,16 +1,23 @@
 # weather
 
-Test task.
+## Что сделано?
 
-## Getting Started
+- Для авторизации использовано Firebase SDK
+- API ключ и другие чувствительные данные скрыты "от чужих глаз" с помощью переменных среды (пакет
+  envied). Для больше безопасности использована обфускация.
+- Данные о погоде берутся с сервиса OpenWeatherMap
+- Приложение кэширует последний загруженный прогноз и при повторном открытии приложения без досутпа
+  к интернету загружает сохраненные данные.
+- На Splash экране выводится приветствие: "Добрый день" / "Доброе утро" и т.д. в зависимости от
+  времени суток
 
-This project is a starting point for a Flutter application.
+## Что можно еще добавить?
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- На данном этапе приложение не разделено на feature в силу своего маленького размера (а также
+  потому что это всего лишь тестовое задание). Однако в реальном проекте это стоило бы сделать.
+- Приложение не использует инструменты для l10n опять же в силу своей простоты.
+- Не используются библиотеки для навигации (такие как go_router, auto_route). Это было бы уместно
+  использовать в большом приложении.
+- Приложение не адаптировано под горизонтальную ориентацию по тем же выше названным причинам
+- На Splash экране можно было бы выводить информацию типа "До заката 3.5 часа", используя
+  OpenWeatherMap.
