@@ -1,3 +1,3 @@
-abstract class DomainException {
+abstract class DomainException implements Exception {
   const DomainException();
 }

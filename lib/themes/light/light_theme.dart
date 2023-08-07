@@ -164,6 +164,9 @@ final lightTheme = ThemeData.light().copyWith(
       borderRadius: BorderRadius.circular(20),
     ),
   ),
+  snackBarTheme: const SnackBarThemeData(
+    behavior: SnackBarBehavior.floating,
+  ),
   extensions: [
     const ColorSchemeTX(
       gradientPrimary: _Colors.blue,

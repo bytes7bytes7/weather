@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../entities/account.dart';
 import '../events/events.dart';
+import '../exceptions/exceptions.dart';
 import '../repositories/auth_repository.dart';
 
 @singleton
@@ -45,9 +46,13 @@ class AuthService {
 
       _eventController.add(const UserLoggedInEvent());
     } catch (e) {
-      await _authRepository.register(email: email, password: password);
+      if (e is UserNotFoundException) {
+        await _authRepository.register(email: email, password: password);
 
-      _eventController.add(const UserLoggedInEvent());
+        _eventController.add(const UserLoggedInEvent());
+      }
+
+      rethrow;
     }
   }
 

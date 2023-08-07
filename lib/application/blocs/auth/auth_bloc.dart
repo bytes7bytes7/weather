@@ -5,9 +5,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../domain/events/events.dart';
+import '../../../domain/exceptions/exceptions.dart';
 import '../../../domain/services/auth_service.dart';
 import '../../../utils/regexp/email_regexp.dart';
 import '../../coordinators/auth_coordinator.dart';
+import '../../providers/auth_exception_string_provider.dart';
 
 part 'auth_event.dart';
 
@@ -20,6 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(
     this._authService,
     this._authCoordinator,
+    this._exceptionStringProvider,
   ) : super(const AuthState()) {
     on<_InitEvent>(_init);
     on<_SetEmailEvent>(_setEmail);
@@ -41,6 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   final AuthService _authService;
   final AuthCoordinator _authCoordinator;
+  final AuthExceptionStringProvider _exceptionStringProvider;
   StreamSubscription? _eventSub;
 
   @override
@@ -105,11 +109,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     try {
       await _authService.authenticate(email: email, password: password);
-    } catch (e) {
-      emit(state.copyWith(error: 'Ошибка'));
-      emit(state.copyWith(error: ''));
+    } on EmailAlreadyInUseException {
+      emit(state.copyWith(error: _exceptionStringProvider.emailAlreadyInUse));
+    } on InvalidEmailException {
+      emit(state.copyWith(error: _exceptionStringProvider.invalidEmail));
+    } on OperationNotAllowedException {
+      emit(state.copyWith(error: _exceptionStringProvider.operationNotAllowed));
+    } on UnknownException {
+      emit(state.copyWith(error: _exceptionStringProvider.unknown));
+    } on UserDisabledException {
+      emit(state.copyWith(error: _exceptionStringProvider.userDisabled));
+    } on UserNotFoundException {
+      emit(state.copyWith(error: _exceptionStringProvider.userNotFound));
+    } on WeakPasswordException {
+      emit(state.copyWith(error: _exceptionStringProvider.weakPassword));
+    } on WrongCredentialsException {
+      emit(state.copyWith(error: _exceptionStringProvider.wrongCredentials));
     } finally {
-      emit(state.copyWith(isLoading: false));
+      emit(state.copyWith(isLoading: false, error: ''));
     }
   }
 
