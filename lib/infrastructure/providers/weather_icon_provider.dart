@@ -24,8 +24,7 @@ class ProdWeatherIconProvider implements WeatherIconProvider {
         return Assets.images.snow.path;
 
       case WeatherType.atmosphere:
-        // TODO:
-        return Assets.images.clear.path;
+        return Assets.images.fog.path;
 
       case WeatherType.clear:
         return Assets.images.clear.path;
@@ -55,8 +54,7 @@ class ProdWeatherIconProvider implements WeatherIconProvider {
         return Assets.icons.snow.path;
 
       case WeatherType.atmosphere:
-        // TODO:
-        return Assets.icons.clear.path;
+        return Assets.icons.fog.path;
 
       case WeatherType.clear:
         return Assets.icons.clear.path;

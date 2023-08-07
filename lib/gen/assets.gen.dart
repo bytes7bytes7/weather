@@ -23,6 +23,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/drizzle.svg
   SvgGenImage get drizzle => const SvgGenImage('assets/icons/drizzle.svg');
 
+  /// File path: assets/icons/fog.svg
+  SvgGenImage get fog => const SvgGenImage('assets/icons/fog.svg');
+
   /// File path: assets/icons/hide.svg
   SvgGenImage get hide => const SvgGenImage('assets/icons/hide.svg');
 
@@ -53,6 +56,7 @@ class $AssetsIconsGen {
         clear,
         clouds,
         drizzle,
+        fog,
         hide,
         humidity,
         location,
@@ -76,6 +80,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/drizzle.png
   AssetGenImage get drizzle => const AssetGenImage('assets/images/drizzle.png');
 
+  /// File path: assets/images/fog.png
+  AssetGenImage get fog => const AssetGenImage('assets/images/fog.png');
+
   /// File path: assets/images/rain.png
   AssetGenImage get rain => const AssetGenImage('assets/images/rain.png');
 
@@ -88,7 +95,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [clear, clouds, drizzle, rain, snow, thunderstorm];
+      [clear, clouds, drizzle, fog, rain, snow, thunderstorm];
 }
 
 class Assets {
