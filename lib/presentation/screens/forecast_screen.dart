@@ -87,7 +87,7 @@ class _Body extends StatelessWidget {
                     width: 8,
                   ),
                   Text(
-                    'Архангельск, Россия',
+                    state.location,
                     style: theme.textTheme.titleSmall,
                   ),
                 ],

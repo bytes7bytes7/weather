@@ -38,9 +38,14 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
     emit(state.copyWith(isLoading: true));
 
     try {
-      final forecast = await _forecastService.getForecastForMyLocation();
+      final result = await _forecastService.getForecastForMyLocation();
 
-      emit(state.copyWith(forecasts: _forecastMapper.mapList(forecast)));
+      emit(
+        state.copyWith(
+          forecasts: _forecastMapper.mapList(result.forecasts),
+          location: result.locationName,
+        ),
+      );
     } on LocationServiceDisabledException {
       emit(
         state.copyWith(error: _exceptionStringProvider.locationServiceDisabled),
@@ -61,7 +66,12 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
       try {
         final cached = await _forecastService.getCachedForecast();
         if (cached != null) {
-          emit(state.copyWith(forecasts: _forecastMapper.mapList(cached)));
+          emit(
+            state.copyWith(
+              forecasts: _forecastMapper.mapList(cached.forecasts),
+              location: cached.locationName,
+            ),
+          );
         }
       } catch (e) {
         emit(state.copyWith(error: _exceptionStringProvider.canNotGetCache));

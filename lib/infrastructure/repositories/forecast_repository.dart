@@ -13,8 +13,8 @@ import '../dto/dto.dart';
 const _lang = 'ru';
 const _amount = 4;
 const _units = 'metric';
-const _boxName = 'forecasts';
-const _cachedKey = 'cached_forecast';
+const _forecastBoxName = 'forecasts';
+const _forecastCachedKey = 'cached_forecast';
 
 @prod
 @LazySingleton(as: ForecastRepository)
@@ -26,17 +26,17 @@ class ProdForecastRepository implements ForecastRepository {
 
   final OpenWeatherDataSource _openWeatherDataSource;
   final Mapper<ForecastResponse, Forecast> _forecastMapper;
-  late final Box<String> _box;
+  late final Box<String> _forecastBox;
 
   @PostConstruct(preResolve: true)
   @override
   Future<void> init() async {
-    _box = await Hive.openBox(_boxName);
+    _forecastBox = await Hive.openBox(_forecastBoxName);
   }
 
   @override
   Future<List<Forecast>?> getCachedForecast() async {
-    final res = _box.get(_cachedKey);
+    final res = _forecastBox.get(_forecastCachedKey);
     if (res == null) {
       return null;
     }
@@ -67,7 +67,7 @@ class ProdForecastRepository implements ForecastRepository {
 
     final jsonData = response.forecasts.map((e) => e.toJson()).toList();
 
-    await _box.put(_cachedKey, json.encode(jsonData));
+    await _forecastBox.put(_forecastCachedKey, json.encode(jsonData));
 
     return _forecastMapper.mapList(response.forecasts);
   }

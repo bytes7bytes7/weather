@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 
 import '../repositories/forecast_repository.dart';
 import '../repositories/location_repository.dart';
-import '../value_objects/forecast.dart';
+import '../value_objects/forecast_location_info.dart';
 
 @singleton
 class ForecastService {
@@ -14,13 +14,28 @@ class ForecastService {
   final LocationRepository _locationRepository;
   final ForecastRepository _forecastRepository;
 
-  Future<List<Forecast>> getForecastForMyLocation() async {
+  Future<ForecastLocationInfo> getForecastForMyLocation() async {
     final location = await _locationRepository.getLocation();
 
-    return _forecastRepository.getForecast(location);
+    final forecasts = await _forecastRepository.getForecast(location);
+    final locationName = await _locationRepository.getLocationName(location);
+
+    return ForecastLocationInfo(
+      forecasts: forecasts,
+      locationName: locationName,
+    );
   }
 
-  Future<List<Forecast>?> getCachedForecast() async {
-    return _forecastRepository.getCachedForecast();
+  Future<ForecastLocationInfo?> getCachedForecast() async {
+    final forecasts = await _forecastRepository.getCachedForecast();
+    final locationName = await _locationRepository.getCachedLocationName();
+    if (forecasts == null || locationName == null) {
+      return null;
+    }
+
+    return ForecastLocationInfo(
+      forecasts: forecasts,
+      locationName: locationName,
+    );
   }
 }

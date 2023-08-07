@@ -7,7 +7,7 @@ class ForecastState with _$ForecastState {
     @Default('') String error,
     @Default([]) List<ForecastVM> forecasts,
     @Default(0) int selectedForecastIndex,
-    LocationVM? location,
+    @Default('') String location,
   }) = _ForecastState;
 
   const ForecastState._();

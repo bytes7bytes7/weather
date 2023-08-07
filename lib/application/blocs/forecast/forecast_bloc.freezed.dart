@@ -443,7 +443,7 @@ mixin _$ForecastState {
   String get error => throw _privateConstructorUsedError;
   List<ForecastVM> get forecasts => throw _privateConstructorUsedError;
   int get selectedForecastIndex => throw _privateConstructorUsedError;
-  LocationVM? get location => throw _privateConstructorUsedError;
+  String get location => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ForecastStateCopyWith<ForecastState> get copyWith =>
@@ -461,9 +461,7 @@ abstract class $ForecastStateCopyWith<$Res> {
       String error,
       List<ForecastVM> forecasts,
       int selectedForecastIndex,
-      LocationVM? location});
-
-  $LocationVMCopyWith<$Res>? get location;
+      String location});
 }
 
 /// @nodoc
@@ -483,7 +481,7 @@ class _$ForecastStateCopyWithImpl<$Res, $Val extends ForecastState>
     Object? error = null,
     Object? forecasts = null,
     Object? selectedForecastIndex = null,
-    Object? location = freezed,
+    Object? location = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -502,23 +500,11 @@ class _$ForecastStateCopyWithImpl<$Res, $Val extends ForecastState>
           ? _value.selectedForecastIndex
           : selectedForecastIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      location: freezed == location
+      location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationVM?,
+              as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LocationVMCopyWith<$Res>? get location {
-    if (_value.location == null) {
-      return null;
-    }
-
-    return $LocationVMCopyWith<$Res>(_value.location!, (value) {
-      return _then(_value.copyWith(location: value) as $Val);
-    });
   }
 }
 
@@ -535,10 +521,7 @@ abstract class _$$_ForecastStateCopyWith<$Res>
       String error,
       List<ForecastVM> forecasts,
       int selectedForecastIndex,
-      LocationVM? location});
-
-  @override
-  $LocationVMCopyWith<$Res>? get location;
+      String location});
 }
 
 /// @nodoc
@@ -556,7 +539,7 @@ class __$$_ForecastStateCopyWithImpl<$Res>
     Object? error = null,
     Object? forecasts = null,
     Object? selectedForecastIndex = null,
-    Object? location = freezed,
+    Object? location = null,
   }) {
     return _then(_$_ForecastState(
       isLoading: null == isLoading
@@ -575,10 +558,10 @@ class __$$_ForecastStateCopyWithImpl<$Res>
           ? _value.selectedForecastIndex
           : selectedForecastIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      location: freezed == location
+      location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as LocationVM?,
+              as String,
     ));
   }
 }
@@ -591,7 +574,7 @@ class _$_ForecastState extends _ForecastState {
       this.error = '',
       final List<ForecastVM> forecasts = const [],
       this.selectedForecastIndex = 0,
-      this.location})
+      this.location = ''})
       : _forecasts = forecasts,
         super._();
 
@@ -614,7 +597,8 @@ class _$_ForecastState extends _ForecastState {
   @JsonKey()
   final int selectedForecastIndex;
   @override
-  final LocationVM? location;
+  @JsonKey()
+  final String location;
 
   @override
   String toString() {
@@ -659,7 +643,7 @@ abstract class _ForecastState extends ForecastState {
       final String error,
       final List<ForecastVM> forecasts,
       final int selectedForecastIndex,
-      final LocationVM? location}) = _$_ForecastState;
+      final String location}) = _$_ForecastState;
   const _ForecastState._() : super._();
 
   @override
@@ -671,7 +655,7 @@ abstract class _ForecastState extends ForecastState {
   @override
   int get selectedForecastIndex;
   @override
-  LocationVM? get location;
+  String get location;
   @override
   @JsonKey(ignore: true)
   _$$_ForecastStateCopyWith<_$_ForecastState> get copyWith =>
