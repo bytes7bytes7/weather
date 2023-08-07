@@ -21,6 +21,7 @@ mixin _$ForecastEvent {
     required TResult Function() load,
     required TResult Function() refresh,
     required TResult Function(int index) selectForecast,
+    required TResult Function() logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$ForecastEvent {
     TResult? Function()? load,
     TResult? Function()? refresh,
     TResult? Function(int index)? selectForecast,
+    TResult? Function()? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$ForecastEvent {
     TResult Function()? load,
     TResult Function()? refresh,
     TResult Function(int index)? selectForecast,
+    TResult Function()? logOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$ForecastEvent {
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_RefreshEvent value) refresh,
     required TResult Function(_SelectForecastEvent value) selectForecast,
+    required TResult Function(_LogOutEvent value) logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$ForecastEvent {
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_RefreshEvent value)? refresh,
     TResult? Function(_SelectForecastEvent value)? selectForecast,
+    TResult? Function(_LogOutEvent value)? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$ForecastEvent {
     TResult Function(_LoadEvent value)? load,
     TResult Function(_RefreshEvent value)? refresh,
     TResult Function(_SelectForecastEvent value)? selectForecast,
+    TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$_LoadEvent implements _LoadEvent {
     required TResult Function() load,
     required TResult Function() refresh,
     required TResult Function(int index) selectForecast,
+    required TResult Function() logOut,
   }) {
     return load();
   }
@@ -131,6 +138,7 @@ class _$_LoadEvent implements _LoadEvent {
     TResult? Function()? load,
     TResult? Function()? refresh,
     TResult? Function(int index)? selectForecast,
+    TResult? Function()? logOut,
   }) {
     return load?.call();
   }
@@ -141,6 +149,7 @@ class _$_LoadEvent implements _LoadEvent {
     TResult Function()? load,
     TResult Function()? refresh,
     TResult Function(int index)? selectForecast,
+    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -155,6 +164,7 @@ class _$_LoadEvent implements _LoadEvent {
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_RefreshEvent value) refresh,
     required TResult Function(_SelectForecastEvent value) selectForecast,
+    required TResult Function(_LogOutEvent value) logOut,
   }) {
     return load(this);
   }
@@ -165,6 +175,7 @@ class _$_LoadEvent implements _LoadEvent {
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_RefreshEvent value)? refresh,
     TResult? Function(_SelectForecastEvent value)? selectForecast,
+    TResult? Function(_LogOutEvent value)? logOut,
   }) {
     return load?.call(this);
   }
@@ -175,6 +186,7 @@ class _$_LoadEvent implements _LoadEvent {
     TResult Function(_LoadEvent value)? load,
     TResult Function(_RefreshEvent value)? refresh,
     TResult Function(_SelectForecastEvent value)? selectForecast,
+    TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -229,6 +241,7 @@ class _$_RefreshEvent implements _RefreshEvent {
     required TResult Function() load,
     required TResult Function() refresh,
     required TResult Function(int index) selectForecast,
+    required TResult Function() logOut,
   }) {
     return refresh();
   }
@@ -239,6 +252,7 @@ class _$_RefreshEvent implements _RefreshEvent {
     TResult? Function()? load,
     TResult? Function()? refresh,
     TResult? Function(int index)? selectForecast,
+    TResult? Function()? logOut,
   }) {
     return refresh?.call();
   }
@@ -249,6 +263,7 @@ class _$_RefreshEvent implements _RefreshEvent {
     TResult Function()? load,
     TResult Function()? refresh,
     TResult Function(int index)? selectForecast,
+    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -263,6 +278,7 @@ class _$_RefreshEvent implements _RefreshEvent {
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_RefreshEvent value) refresh,
     required TResult Function(_SelectForecastEvent value) selectForecast,
+    required TResult Function(_LogOutEvent value) logOut,
   }) {
     return refresh(this);
   }
@@ -273,6 +289,7 @@ class _$_RefreshEvent implements _RefreshEvent {
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_RefreshEvent value)? refresh,
     TResult? Function(_SelectForecastEvent value)? selectForecast,
+    TResult? Function(_LogOutEvent value)? logOut,
   }) {
     return refresh?.call(this);
   }
@@ -283,6 +300,7 @@ class _$_RefreshEvent implements _RefreshEvent {
     TResult Function(_LoadEvent value)? load,
     TResult Function(_RefreshEvent value)? refresh,
     TResult Function(_SelectForecastEvent value)? selectForecast,
+    TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -364,6 +382,7 @@ class _$_SelectForecastEvent implements _SelectForecastEvent {
     required TResult Function() load,
     required TResult Function() refresh,
     required TResult Function(int index) selectForecast,
+    required TResult Function() logOut,
   }) {
     return selectForecast(index);
   }
@@ -374,6 +393,7 @@ class _$_SelectForecastEvent implements _SelectForecastEvent {
     TResult? Function()? load,
     TResult? Function()? refresh,
     TResult? Function(int index)? selectForecast,
+    TResult? Function()? logOut,
   }) {
     return selectForecast?.call(index);
   }
@@ -384,6 +404,7 @@ class _$_SelectForecastEvent implements _SelectForecastEvent {
     TResult Function()? load,
     TResult Function()? refresh,
     TResult Function(int index)? selectForecast,
+    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (selectForecast != null) {
@@ -398,6 +419,7 @@ class _$_SelectForecastEvent implements _SelectForecastEvent {
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_RefreshEvent value) refresh,
     required TResult Function(_SelectForecastEvent value) selectForecast,
+    required TResult Function(_LogOutEvent value) logOut,
   }) {
     return selectForecast(this);
   }
@@ -408,6 +430,7 @@ class _$_SelectForecastEvent implements _SelectForecastEvent {
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_RefreshEvent value)? refresh,
     TResult? Function(_SelectForecastEvent value)? selectForecast,
+    TResult? Function(_LogOutEvent value)? logOut,
   }) {
     return selectForecast?.call(this);
   }
@@ -418,6 +441,7 @@ class _$_SelectForecastEvent implements _SelectForecastEvent {
     TResult Function(_LoadEvent value)? load,
     TResult Function(_RefreshEvent value)? refresh,
     TResult Function(_SelectForecastEvent value)? selectForecast,
+    TResult Function(_LogOutEvent value)? logOut,
     required TResult orElse(),
   }) {
     if (selectForecast != null) {
@@ -435,6 +459,120 @@ abstract class _SelectForecastEvent implements ForecastEvent {
   @JsonKey(ignore: true)
   _$$_SelectForecastEventCopyWith<_$_SelectForecastEvent> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LogOutEventCopyWith<$Res> {
+  factory _$$_LogOutEventCopyWith(
+          _$_LogOutEvent value, $Res Function(_$_LogOutEvent) then) =
+      __$$_LogOutEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LogOutEventCopyWithImpl<$Res>
+    extends _$ForecastEventCopyWithImpl<$Res, _$_LogOutEvent>
+    implements _$$_LogOutEventCopyWith<$Res> {
+  __$$_LogOutEventCopyWithImpl(
+      _$_LogOutEvent _value, $Res Function(_$_LogOutEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_LogOutEvent implements _LogOutEvent {
+  const _$_LogOutEvent();
+
+  @override
+  String toString() {
+    return 'ForecastEvent.logOut()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_LogOutEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function() refresh,
+    required TResult Function(int index) selectForecast,
+    required TResult Function() logOut,
+  }) {
+    return logOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function()? refresh,
+    TResult? Function(int index)? selectForecast,
+    TResult? Function()? logOut,
+  }) {
+    return logOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function()? refresh,
+    TResult Function(int index)? selectForecast,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (logOut != null) {
+      return logOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadEvent value) load,
+    required TResult Function(_RefreshEvent value) refresh,
+    required TResult Function(_SelectForecastEvent value) selectForecast,
+    required TResult Function(_LogOutEvent value) logOut,
+  }) {
+    return logOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadEvent value)? load,
+    TResult? Function(_RefreshEvent value)? refresh,
+    TResult? Function(_SelectForecastEvent value)? selectForecast,
+    TResult? Function(_LogOutEvent value)? logOut,
+  }) {
+    return logOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadEvent value)? load,
+    TResult Function(_RefreshEvent value)? refresh,
+    TResult Function(_SelectForecastEvent value)? selectForecast,
+    TResult Function(_LogOutEvent value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (logOut != null) {
+      return logOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LogOutEvent implements ForecastEvent {
+  const factory _LogOutEvent() = _$_LogOutEvent;
 }
 
 /// @nodoc

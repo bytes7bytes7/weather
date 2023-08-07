@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../domain/exceptions/exceptions.dart';
+import '../../../domain/services/auth_service.dart';
 import '../../../domain/services/forecast_service.dart';
 import '../../../domain/value_objects/forecast.dart';
 import '../../../utils/mapper.dart';
@@ -19,15 +20,18 @@ part 'forecast_bloc.freezed.dart';
 class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
   ForecastBloc(
     this._forecastService,
+    this._authService,
     this._exceptionStringProvider,
     this._forecastMapper,
   ) : super(const ForecastState()) {
     on<_LoadEvent>(_load);
     on<_RefreshEvent>(_refresh);
     on<_SelectForecastEvent>(_selectForecast);
+    on<_LogOutEvent>(_logOut);
   }
 
   final ForecastService _forecastService;
+  final AuthService _authService;
   final ForecastExceptionStringProvider _exceptionStringProvider;
   final Mapper<Forecast, ForecastVM> _forecastMapper;
 
@@ -99,5 +103,16 @@ class ForecastBloc extends Bloc<ForecastEvent, ForecastState> {
     }
 
     emit(state.copyWith(selectedForecastIndex: event.index));
+  }
+
+  Future<void> _logOut(
+    _LogOutEvent event,
+    Emitter<ForecastState> emit,
+  ) async {
+    emit(state.copyWith(isLoading: true));
+
+    await _authService.logOut();
+
+    emit(state.copyWith(isLoading: false));
   }
 }

@@ -8,4 +8,6 @@ class ForecastEvent with _$ForecastEvent {
 
   const factory ForecastEvent.selectForecast({required int index}) =
       _SelectForecastEvent;
+
+  const factory ForecastEvent.logOut() = _LogOutEvent;
 }

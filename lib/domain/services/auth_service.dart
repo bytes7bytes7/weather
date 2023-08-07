@@ -56,6 +56,10 @@ class AuthService {
     }
   }
 
+  Future<void> logOut()  {
+    return _authRepository.logOut();
+  }
+
   void _updateAccount(Account? account) {
     if (account != null) {
       _eventController.add(const UserLoggedInEvent());

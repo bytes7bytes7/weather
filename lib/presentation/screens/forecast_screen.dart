@@ -122,6 +122,13 @@ class _Body extends StatelessWidget {
                         state.location,
                         style: theme.textTheme.titleSmall,
                       ),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {
+                          bloc.add(const ForecastEvent.logOut());
+                        },
+                        icon: const Icon(Icons.logout),
+                      ),
                     ],
                   ),
                   DecoratedBox(

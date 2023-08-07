@@ -45,4 +45,9 @@ class ProdAuthRepository implements AuthRepository {
   }) {
     return _firebaseDataSource.register(email: email, password: password);
   }
+
+  @override
+  Future<void> logOut() {
+    return _firebaseDataSource.logOut();
+  }
 }

@@ -112,4 +112,8 @@ class FirebaseDataSource {
       throw UnknownException(e.toString());
     }
   }
+
+  Future<void> logOut() async {
+    await _firebase.signOut();
+  }
 }
