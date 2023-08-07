@@ -21,4 +21,7 @@ abstract class Env {
 
   @EnviedField(varName: 'firebaseStorageBucket')
   static final String firebaseStorageBucket = _Env.firebaseStorageBucket;
+
+  @EnviedField(varName: 'openWeatherApiKey')
+  static final String openWeatherApiKey = _Env.openWeatherApiKey;
 }

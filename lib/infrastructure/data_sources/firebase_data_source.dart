@@ -13,7 +13,7 @@ const _userDisabled = 'user-disabled';
 const _userNotFound = 'user-not-found';
 const _wrongPassword = 'wrong-password';
 
-@singleton
+@lazySingleton
 class FirebaseDataSource {
   const FirebaseDataSource();
 

@@ -9,9 +9,6 @@ targets:
       envied_generator|envied_generator:
         generate_for:
           - "**/env/**.dart"
-      json_serializable|json_serializable:
-        generate_for:
-          - "**/infrastructure/**.dart"
         options:
           # Options configure how source code is generated for every
           # `@JsonSerializable`-annotated class in the package.
